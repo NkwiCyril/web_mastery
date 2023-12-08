@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack</title>
+</head>
+<style>
+    body {
+        background-color: rgb(74, 74, 74);
+    }
+
+    .main-div {
+        border: 1px solid black;
+        width: 250px;
+        height: 250px;
+        background-color: black;
+    }
+
+    #circle {
+        border: 30px solid red;
+    }
+
+    .div-1,
+    .div-2,
+    .div-3,
+    .div-4,
+    .div-5 {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        border: 1px solid black;
+        width: 250px;
+        height: 250px;
+    }
+
+    .div-1 {
+        background-color: red;
+    }
+
+    .div-2 {
+        background-color: orange;
+    }
+
+    .div-3 {
+        background-color: yellow;
+    }
+
+    .div-4 {
+        background-color: green;
+    }
+
+    .div-5 {
+        background-color: violet;
+    }
+
+    .cirl {
+        position: relative;
+        top: -30px;
+        left: 30%;
+        background-color: white;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid black ;
+    }
+
+    img {
+        width: 100%;
+        object-fit:contain;
+
+    }
+</style>
+
+<body>
+    <div class="main-div">
+        <div class="div-1">
+            <div class="div-2">
+                <div class="cirl"></div>
+                <div class="div-3">
+                    <div class="cirl"></div>
+                    <div class="div-4">
+                        <div class="cirl"></div>
+                        <div class="div-5">
+                            <div class="cirl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
