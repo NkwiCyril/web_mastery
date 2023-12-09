@@ -1,7 +1,54 @@
-<h1>Open-Source Software</h1>
-<h2>An Overview on how Open-Source Contributions are made.</h2>
-<h3>Authors: Nkwi Cyril and Sataya Nadella</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+</head>
+<style>
+    .main-div {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        gap: 5px;
+    }
 
-<hr>
+    .card {
+        background-color: rgb(237, 237, 237)!important;
+        box-shadow: -5px -5px 15px -3px rgba(0, 0, 0, 0.2);
+        border-radius: 7px;
+    }
 
-<p >Open-Source Software in any software that is available for use by the pubic.<br>Examples of open-source software include: Linux OS, angularjs, react, django, mediaWiki and so on. </p>
+    .first {
+        grid-column: span 5;
+    }
+
+</style>
+<body>
+    <div class="main-div">
+        <div class="card first">
+            <p>Is this the correct manner in which we are to use the Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, repudiandae tempore? Enim adipisci consectetur aspernatur libero veniam dicta excepturi architecto! Accusamus quaerat illum perferendis fuga modi nisi veritatis itaque corporis.</p>
+        </div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+</body>
+</html>
