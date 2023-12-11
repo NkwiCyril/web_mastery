@@ -71,7 +71,7 @@ iPads and Tablets: 481px — 1200px
 Laptops: 1201px — 1600px
 Desktops: 1601px and more */
 
-@media (min-width: 319px) and (max-width: 480px) {
+@media (max-width: 680px) {
 
 body {
   margin: 0 10px;
