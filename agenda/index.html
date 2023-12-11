@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Source Code Pro", sans-serif;
+        color: white;
+      }
+      body {
+        background-color: black;
+      }
+
+      .me {
+        position: absolute;
+        color: white;
+        font-size: 30px;
+        border-top: 1px solid white;
+      }
+
+      h1,
+      h3,
+      span {
+        color: orange;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 6rem;
+        margin-bottom: 20px;
+      }
+
+      .main-section {
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+      }
+
+      li {
+        color: black;
+        text-align: left;
+      }
+
+      .card {
+        padding: 10px;
+        border-radius: 10px;
+        height: 250px;
+        width: 370px;
+        background-color: white;
+      }
+
+      footer {
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      @media (max-width: 1000px) {
+        .main-section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          gap: 15px;
+        }
+        h1 {
+          font-size: 10rem;
+        }
+        li, h3{
+          font-size: 40px;
+        }
+        .card {
+          padding: 10px;
+          border-radius: 10px;
+          height: fit-content;
+          width: 100%;
+          background-color: white;
+        }
+      }
+    </style>
+    <title>Meeting Agenda</title>
+  </head>
+  <body>
+    <h1>Meeting Agenda</h1>
+    <h2>
+      <span>Date:</span> 11th December 2023 <br /><span>Time:</span> 8PM - 9PM
+      <br /><span
+        >Location:
+        <a href="https://meet.google.com/fwo-yvef-yir">Google meet</a></span
+      >
+    </h2>
+    <div class="main-section">
+      <div class="card">
+        <h3>I. Opening (8:00 PM - 8:05 PM)</h3>
+        <ul>
+          <li>Welcome and Introductions</li>
+          <li>Overview and Meeting Agenda</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>
+          II. Evaluation Criteria for Server Configurations (8:05 PM - 8:15 PM)
+        </h3>
+        <ul>
+          <li>What is required at this stage?</li>
+          <li>Clarify any questions regarding the criteria</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>
+          III. In-Depth Analysis of Linux and Windows Server Settings (8:15 PM -
+          8:30 PM)
+        </h3>
+        <ul>
+          <li>What is required of us at this stage?</li>
+          <li>Define parameters</li>
+          <li>Discuss on research made in this aspect</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>IV. Performance benchmarking</h3>
+        <ul>
+          <li>What is performance benchmarking? Concise breakdown</li>
+          <li>Performance comparison between Linux and Windows</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>V. Recommendations for Specific Use Cases (8:45 PM - 8:55 PM)</h3>
+        <ul>
+          <li>Aim of this section</li>
+          <li>Discuss on information and data gatherd so far</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>VI. Q&A, Open Discussion, Closing (8:55 PM - 9:00 PM)</h3>
+        <ul>
+          <li>Open the floor for questions</li>
+          <li>Share insights on the project matter</li>
+          <li>Decide on plan of action</li>
+          <li>Closing Remarks</li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <p>©️ Nkwi Cyril 2023</p>
+      <p>Web Designer</p>
+    </footer>
+  </body>
+</html>
