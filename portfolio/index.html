@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IAmNkwiCyril</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: black;
+    }
+
+    .navbar {
+      color: white;
+      font-family: "Source Code Pro";
+      display: flex;
+      height: max-content;
+      align-items: center;
+      gap: 50px;
+      padding: 10px 40px;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 20px;
+      text-transform: uppercase;
+    }
+
+    .nav-items p {
+      padding: 2px 0;
+      border-bottom: 2px solid white;
+      cursor: pointer;
+    }
+
+    .navbar img {
+      width: 5%;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: #ffffff;
+      font-family: "Source Code Pro";
+      font-size: 10rem;
+      text-align: center;
+    }
+    .container img {
+      width: 30%;
+      position: absolute;
+      align-self: center;
+      z-index: -1;
+    }
+  </style>
+  <body>
+    <div class="navbar">
+      <img
+        src="../capstone_project_1/assets/images/nac_logo.jpg"
+        alt="my logo"
+      />
+      <ul class="nav-items">
+        <p>About me</p>
+        <p>Projects</p>
+        <p>Tools</p>
+        <p>Skills</p>
+      </ul>
+    </div>
+    <div class="container">
+      <img src="./assets/main_pic.jpeg" alt="picture of Nkwi Cyril" />
+      <h1>Web Developer</h1>
+    </div>
+  </body>
+</html>
