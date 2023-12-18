@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-container {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 9px;
+}
+
+.red-shape {
+    background-color: #E72F24;
+}
+
+.white-shape {
+    background-color: #F0F1EC;
+}
+
+
+.blue-shape {
+    background-color: #004592;
+}
+
+.item {
+    grid-row: span 2;
+}
