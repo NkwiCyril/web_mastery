@@ -2,9 +2,11 @@
   background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
   background-size: 180% 180%;
   animation: gradient-animation 18s ease infinite;
-  
 }
 
+* {
+  margin: 0;
+}
 
 @keyframes gradient-animation {
   0% {
@@ -36,9 +38,29 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 100px;
+  padding: 20px 10px 0px 10px;
 }
 
-.container img {
-  height: 30px;
+.row {
+  margin-top: 30px;
+}
+
+.brand img {
+  margin: 0px 30px;
+}
+
+#testimonial {
+  background-color: rgb(245, 245, 245);
+  padding: 50px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+#footer {
+  margin-bottom: -100%;
 }
