@@ -2,6 +2,8 @@
   font-family: "Source Code Pro", "sans-serif";
 }
 
+/* hero section styling */
+
 #hero {
   background: linear-gradient(300deg, #0000, #2d2d2d, #000000);
   background-size: 180% 180%;
@@ -39,6 +41,8 @@
 }
 .profession p {
   font-size: 2.5rem;
+  width: fit-content;
+  height: fit-content;
 }
 
 .intro h1 {
@@ -50,5 +54,65 @@
   font-size: 1.5rem;
 }
 
+/* about me section styling */
 
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+  background-color: rgb(231, 229, 229);
+  height: fit-content;
+}
 
+.about {
+  max-width: 50%;
+}
+
+.about h2 {
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+.about h3 {
+  text-transform: uppercase;
+}
+
+.yellow {
+  color: rgb(123, 123, 37);
+}
+
+.lang {
+  position: relative;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+.js {
+  align-self: baseline;
+  rotate: 20deg;
+  font-size: 5rem;
+  right: 30px;
+}
+
+.c {
+  rotate: -20deg;
+  font-size: 2rem;
+  align-self: flex-end;
+  right: 50px;
+}
+
+.cpp {
+  font-size: 2rem;
+  justify-self: flex-start;
+  rotate: -40deg;
+  order: 1;
+}
+
+.java {
+  order: 1;
+  align-self: baseline;
+  rotate: 40deg;
+  font-size: 2rem;
+}
