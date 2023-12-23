@@ -13,7 +13,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 @keyframes gradient-animation {
@@ -62,18 +61,18 @@
   align-items: center;
   padding: 3rem 0;
   background-color: rgb(231, 229, 229);
-  height: fit-content;
+  height: 100vh;
 }
 
 .about {
   max-width: 50%;
 }
 
-.about h2 {
+/* .about h2 {
   font-weight: bolder;
   text-transform: uppercase;
   padding: 5px;
-}
+} */
 
 .about h3 {
   text-transform: uppercase;
@@ -101,18 +100,56 @@
   font-size: 2rem;
   align-self: flex-end;
   right: 50px;
+  bottom: 2rem;
 }
 
 .cpp {
   font-size: 2rem;
-  justify-self: flex-start;
   rotate: -40deg;
   order: 1;
+  left: 3rem;
 }
 
 .java {
   order: 1;
   align-self: baseline;
+  left: 20px;
   rotate: 40deg;
   font-size: 2rem;
 }
+
+/* projects section */
+#projects {
+  background: linear-gradient(300deg, #0000, #2d2d2d, #000000);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+  max-width: 100%;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.pro-card {
+  width: 90%;
+  height: fit-content ; /* change this to 'fit-content' */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.pro-image {
+  width: 100%;
+  height: 100%;
+  border: 2px solid yellow;
+}
+
+.pro-image img {
+  width: 100%;
+  height: 100%;
+}
+
