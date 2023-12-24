@@ -67,7 +67,7 @@
   align-items: center;
   padding: 3rem 0;
   background-color: #e7e5e5;
-  height: 100vh;
+  height: fit-content;
 }
 
 .about {
@@ -257,4 +257,24 @@
 
 .medium:hover {
   color: #d4d3d3;
+}
+
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .pro-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 3rem;
+  }
+  .pro-image img {
+    width: 100%;
+  }
+  .order {
+    order: 1;
+  }
+
+  .techs {
+    grid-template-columns: 1fr;
+  }
 }
