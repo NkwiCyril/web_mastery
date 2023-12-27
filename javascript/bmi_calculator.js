@@ -4,7 +4,6 @@ function message(bmi, message) {
 
 function bmiCalculator(weight, height) {
   var bmi = weight / (height * height);
-  bmi = bmi.toFixed(2)
   var interpretation;
 
   if (bmi < 18.5) {
@@ -25,4 +24,4 @@ function bmiCalculator(weight, height) {
   return interpretation;
 }
 
-console.log(bmiCalculator(500,74));
+console.log(bmiCalculator(60,2));
