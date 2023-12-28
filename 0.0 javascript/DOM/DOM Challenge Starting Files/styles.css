@@ -1,3 +1,10 @@
 h1 {
   color: red;
 }
+
+.change {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  color: white;
+  background-color: black;
+}
