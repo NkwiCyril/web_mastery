@@ -21,4 +21,4 @@ n1 > n2
   ? (result.innerHTML = "🎲 Player One Wins")
   : n1 < n2
   ? (result.innerHTML = "Player Two Wins 🎲")
-  : (result.innerHTML = "🎲 It's a draw 🎲");
+  : (result.innerHTML = "Draw!");
