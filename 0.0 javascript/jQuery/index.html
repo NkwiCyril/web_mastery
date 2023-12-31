@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <body>
+    <h1>Hello World!</h1>
+    <div class="buttons">
+      <button>Click Me!</button>
+      <button>Click Me!</button>
+      <button>Click Me!</button>
+      <button>Click Me!</button>
+      <button>Click Me!</button>
+    </div>
+
+    <script>
+      $("button").on('click', () => {
+          console.log("Mel made me do it");
+      })
+    </script>
+  </body>
+</html>
