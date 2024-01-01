@@ -18,10 +18,10 @@ $('button').click(function (e) {
 
 $('h1').hover(function () {
         // over
-        $('h1').css('color', 'red');
+        $(this).css('color', 'red');
     }, function () {
         // out
-        $('h1').css('color', 'black');
+        $(this).css('color', 'black');
 
     }
 );
