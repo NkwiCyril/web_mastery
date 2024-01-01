@@ -283,3 +283,9 @@ a {
   text-decoration: none;
   color: white;
 }
+
+.position {
+  rotate: 0deg;
+  transition: all ease-in-out .3s;
+  border: none;
+}
