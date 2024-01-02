@@ -12,4 +12,8 @@ var randomChosenColor = buttonColors[randomNumber];
 
 gamePattern.push(randomChosenColor);
 
-$('#randomChosenColor')
+setInterval(() => {
+  $("#" + randomChosenColor)
+    .fadeOut(100)
+    .fadeIn(100);
+}, 1500);
