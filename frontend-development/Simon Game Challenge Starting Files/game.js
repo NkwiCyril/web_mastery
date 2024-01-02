@@ -8,6 +8,8 @@ var buttonColors = ["red", "blue", "green", "yellow"];
 
 var randomNumber = nextSequence();
 
-var randomChosenColour = buttonColors[randomNumber];
+var randomChosenColor = buttonColors[randomNumber];
 
-gamePattern.push(randomChosenColour);
+gamePattern.push(randomChosenColor);
+
+$('#randomChosenColor')
