@@ -18,5 +18,10 @@ setInterval(() => {
     .fadeIn(100);
 
   var audio = new Audio(`./sounds/${randomChosenColor}.mp3`);
-  audio.play();
+  // audio.play();
 }, 1500);
+
+$(".btn").click(function () {
+  var userChosenColor = $(this).attr("id"); // selec the current HTML element
+  console.log(userChosenColor);
+});
