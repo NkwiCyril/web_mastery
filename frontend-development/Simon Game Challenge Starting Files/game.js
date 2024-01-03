@@ -1,6 +1,14 @@
 var gamePattern = [];
 
-var nextSequence = () => {
+function nextSequence() {
+  setTimeout(() => {
+    $("#" + randomChosenColor)
+      .fadeOut(100)
+      .fadeIn(100)
+      .fadeOut(100)
+      .fadeIn(100);
+    playSound(randomChosenColor);
+  }, 1000);
   return Math.floor(Math.random() * 4);
 };
 
