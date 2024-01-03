@@ -4,6 +4,12 @@ var nextSequence = () => {
   return Math.floor(Math.random() * 4);
 };
 
+var playSound = (name) => {
+  var audio = new Audio(`./sounds/${name}.mp3`);
+  return audio.play();
+}
+
+
 var buttonColors = ["red", "blue", "green", "yellow"];
 
 var randomNumber = nextSequence();
