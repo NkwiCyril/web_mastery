@@ -1,16 +1,21 @@
 var gamePattern = [];
 var userClickedPattern = [];
+var buttonColors = ["red", "blue", "green", "yellow"];
 
 function nextSequence() {
+  return Math.floor(Math.random() * 4);
+}
+
+var randomNumber = nextSequence(); // get the returned random number
+var randomChosenColor = buttonColors[randomNumber]; // select color name from the random index
+gamePattern.push(randomChosenColor); // add color to the game pattern array
+
+function buttonBlink() {
   setTimeout(() => {
     $("#" + randomChosenColor)
       .fadeOut(100)
       .fadeIn(100)
-      .fadeOut(100)
-      .fadeIn(100);
-    playSound(randomChosenColor);
-  }, 1000);
-  return Math.floor(Math.random() * 4);
+  }, 100);
 }
 
 $("body").keydown(function () {
@@ -41,14 +46,6 @@ function animatePress(currentColor) {
     $("." + currentColor).removeClass("pressed");
   }, 100);
 }
-
-var buttonColors = ["red", "blue", "green", "yellow"];
-
-var randomNumber = nextSequence();
-
-var randomChosenColor = buttonColors[randomNumber];
-
-gamePattern.push(randomChosenColor);
 
 $(".btn").click(function () {
   var userChosenColor = $(this).attr("id"); // select the current HTML element
