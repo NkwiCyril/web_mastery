@@ -13,6 +13,22 @@ function nextSequence() {
   return Math.floor(Math.random() * 4);
 }
 
+$("body").keydown(function () {
+  var level = 1;
+  var title = $("#level-title").text();
+  // console.log(hello);
+
+  if (title == "Press A Key to Start") {
+    $("#level-title").text("Level 1");
+    buttonBlink();
+  } else {
+    $("#level-title").text(`Level ${++level}`);
+    buttonBlink()
+  }
+});
+
+
+
 function playSound(name) {
   var audio = new Audio(`./sounds/${name}.mp3`);
   return audio.play();
