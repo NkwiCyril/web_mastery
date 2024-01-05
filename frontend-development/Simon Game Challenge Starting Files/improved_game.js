@@ -8,8 +8,20 @@ function nextSequence() {
   let randomChosenColor = buttonColors[randomNumber]; // get color randomly
   gamePattern.push(randomChosenColor); // store random selected color in gamePattern list
 
-$("body").keypress(function (e) {
-  while (true) {
+	var level = 0;
+	while (level < gamePattern.length) {
+		$("#level-title").text(`Level ${level + 1}`);
+		level++;
+	}
+
+
+  playSound(randomChosenColor);
+  setTimeout(() => {
+    $(`#${randomChosenColor}`)
+      .fadeOut(100)
+      .fadeIn(100);
+  }, 100);
+}
 
     let randomNumber = nextSequence(); // store returned random number
     let randomChosenColor = buttonColors[randomNumber]; // get color randomly
