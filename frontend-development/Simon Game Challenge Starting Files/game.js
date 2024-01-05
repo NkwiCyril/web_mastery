@@ -3,7 +3,8 @@ var userClickedPattern = [];
 var buttonColors = ["red", "blue", "green", "yellow"];
 
 function nextSequence() {
-  return Math.floor(Math.random() * 4);
+  var randomNumber = Math.floor(Math.random() * buttonColors.length);
+  return randomNumber;
 }
 
 var randomNumber = nextSequence(); // get the returned random number
@@ -14,25 +15,25 @@ function buttonBlink() {
   setTimeout(() => {
     $("#" + randomChosenColor)
       .fadeOut(100)
-      .fadeIn(100)
+      .fadeIn(100);
   }, 100);
+  playSound(randomChosenColor)
 }
 
 $("body").keydown(function () {
   var level = 1;
   var title = $("#level-title").text();
-  // console.log(hello);
 
-  if (title == "Press A Key to Start") {
-    $("#level-title").text("Level 1");
-    buttonBlink();
-  } else {
-    $("#level-title").text(`Level ${++level}`);
-    buttonBlink()
+  while (true) {
+    if (title == "Press A Key to Start") {
+      $("#level-title").text(`Level ${level}`);
+      buttonBlink();
+    } else {
+      level++;
+      $("#level-title").text(`Level ${level}`);
+    }
   }
 });
-
-
 
 function playSound(name) {
   var audio = new Audio(`./sounds/${name}.mp3`);
