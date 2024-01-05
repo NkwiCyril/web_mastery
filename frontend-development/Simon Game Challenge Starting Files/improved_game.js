@@ -16,6 +16,10 @@ $("body").keypress(function (e) {
     
     gamePattern.push(randomChosenColor); // store random selected color in gamePattern list
 
+$("body").keypress(function () {
     
+  var title = $("#level-title").text();
+  if (title == "Press A Key to Start") {
+    nextSequence();
   }
 });
