@@ -34,6 +34,17 @@ $("body").keypress(function () {
   if (title == "Press A Key to Start") {
     nextSequence();
   }
+  $(".btn").click(function () {
+    var userChosenColor = $(this).attr("id"); // select the current HTML element
+    animatePress(userChosenColor);
+    userClickedPattern.push(userChosenColor);
+    playSound(userChosenColor);
+		if (checkAnswer(userClickedPattern, gamePattern)) {
+			nextSequence()
+		} {
+			alert('Incorrect sequence!')
+		}
+  });
 });
 
 function checkAnswer(a, b) {
