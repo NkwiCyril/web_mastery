@@ -35,3 +35,9 @@ $("body").keypress(function () {
     nextSequence();
   }
 });
+
+function checkAnswer(a, b) {
+  let lengthCompare = a.length === b.length;
+  let elementCompare = a.every((element, index) => element === b[index]);
+  return lengthCompare && elementCompare;
+}
