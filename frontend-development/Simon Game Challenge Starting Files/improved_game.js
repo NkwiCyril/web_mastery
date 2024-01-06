@@ -1,35 +1,40 @@
 var gamePattern = []; // store random colors selected by comp
-var userPattern = []; // store pattern selected by user
+var userClickedPattern = []; // store pattern selected by user
 
 var buttonColors = ["red", "blue", "green", "yellow"]; // colors of the various buttons
 
+function playSound(colorName) {
+  let audio = new Audio(`./sounds/${colorName}.mp3`);
+  return audio.play();
+}
+
 function nextSequence() {
-  let randomNumber = Math.floor(Math.random() * (buttonColors.length + 1));
-  let randomChosenColor = buttonColors[randomNumber]; // get color randomly
+  var randomNumber = Math.floor(Math.random() * buttonColors.length);
+  var randomChosenColor = buttonColors[randomNumber]; // get color randomly
   gamePattern.push(randomChosenColor); // store random selected color in gamePattern list
+  console.log(gamePattern);
 
-	var level = 0;
-	while (level < gamePattern.length) {
-		$("#level-title").text(`Level ${level + 1}`);
-		level++;
-	}
-
+  var level = 0;
+  while (level < gamePattern.length) {
+    $("#level-title").text(`Level ${level + 1}`);
+    level++;
+  }
 
   playSound(randomChosenColor);
   setTimeout(() => {
-    $(`#${randomChosenColor}`)
-      .fadeOut(100)
-      .fadeIn(100);
+    $(`#${randomChosenColor}`).fadeOut(100).fadeIn(100);
   }, 100);
 }
 
-    let randomNumber = nextSequence(); // store returned random number
-    let randomChosenColor = buttonColors[randomNumber]; // get color randomly
-    
-    gamePattern.push(randomChosenColor); // store random selected color in gamePattern list
+function animatePress(currentColor) {
+  // get currentColor of clicked button and add .pressed
+  $("." + currentColor).addClass("pressed");
+  setTimeout(() => {
+    $("." + currentColor).removeClass("pressed");
+  }, 100);
+}
 
 $("body").keypress(function () {
-    
   var title = $("#level-title").text();
   if (title == "Press A Key to Start") {
     nextSequence();
