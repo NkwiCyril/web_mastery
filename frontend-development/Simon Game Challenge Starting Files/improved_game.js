@@ -44,8 +44,18 @@ $("body").keypress(function () {
     animatePress(userChosenColor);
     userClickedPattern.push(userChosenColor);
     playSound(userChosenColor);
-		if (checkAnswer(userClickedPattern, gamePattern)) {
-			nextSequence()
+  checkAnswer(userClickedPattern.lastIndexOf(userChosenColor));
+});
+
+function checkAnswer(checkLevel) {
+  console.log(checkLevel);
+
+  if (userClickedPattern[checkLevel] === gamePattern[checkLevel]) {
+    console.log("success");
+		if (userClickedPattern.length === gamePattern.length) {
+			setTimeout(() => {
+				userClickedPattern = []
+				nextSequence()
 		} {
 			alert('Incorrect sequence!')
 		}
