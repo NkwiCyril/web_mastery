@@ -12,7 +12,7 @@ function nextSequence() {
   var randomNumber = Math.floor(Math.random() * buttonColors.length);
   var randomChosenColor = buttonColors[randomNumber]; // get color randomly
   gamePattern.push(randomChosenColor); // store random selected color in gamePattern list
-  console.log(gamePattern);
+  console.log("updated game pattern: " + gamePattern);
 
   var level = 0;
   while (level < gamePattern.length) {
@@ -43,6 +43,7 @@ $(".btn").click(function () {
   var userChosenColor = $(this).attr("id"); // select the current HTML element
   animatePress(userChosenColor);
   userClickedPattern.push(userChosenColor);
+  console.log("updated user pattern: " + userClickedPattern);
     playSound(userChosenColor);
   checkAnswer(userClickedPattern.lastIndexOf(userChosenColor));
 });
