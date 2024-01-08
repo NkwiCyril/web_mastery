@@ -39,10 +39,10 @@ $("body").keypress(function () {
   if (title == "Press A Key to Start") {
     nextSequence();
   }
-  $(".btn").click(function () {
-    var userChosenColor = $(this).attr("id"); // select the current HTML element
-    animatePress(userChosenColor);
-    userClickedPattern.push(userChosenColor);
+$(".btn").click(function () {
+  var userChosenColor = $(this).attr("id"); // select the current HTML element
+  animatePress(userChosenColor);
+  userClickedPattern.push(userChosenColor);
     playSound(userChosenColor);
   checkAnswer(userClickedPattern.lastIndexOf(userChosenColor));
 });
