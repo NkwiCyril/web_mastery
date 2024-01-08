@@ -13,7 +13,7 @@ function nextSequence() {
   var randomNumber = Math.floor(Math.random() * buttonColors.length);
   var randomChosenColor = buttonColors[randomNumber]; // get color randomly
   gamePattern.push(randomChosenColor); // store random selected color in gamePattern list
-  console.log("game pattern: " + gamePattern);
+  // console.log("game pattern: " + gamePattern);
 
   while (level < gamePattern.length) {
     // increase level number when nextSequence is called
@@ -36,26 +36,20 @@ function animatePress(currentColor) {
 }
 
 $("body").keypress(function () {
-  // if (
-  //   title == "Press A Key to Start" ||
-  //   title == "Game Over, Press Any Key to Restart"
-  // ) {
-  //   nextSequence();
-  // }
-
 	if (!started) {
 		nextSequence();
 	} 
-
 });
 
 $(".btn").click(function () {
   var userChosenColor = $(this).attr("id"); // select the current HTML element
   animatePress(userChosenColor);
   userClickedPattern.push(userChosenColor);
-  console.log("user pattern: " + userClickedPattern);
+  // console.log("user pattern: " + userClickedPattern);
   playSound(userChosenColor);
-  checkAnswer(userClickedPattern.lastIndexOf(userChosenColor));
+	// get the last index of latest chosen color
+	let latestChosenColor = userClickedPattern.lastIndexOf(userChosenColor);
+  checkAnswer(latestChosenColor); 
 });
 
 function checkAnswer(checkLevel) {
