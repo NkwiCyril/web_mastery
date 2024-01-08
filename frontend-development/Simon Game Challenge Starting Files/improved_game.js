@@ -41,7 +41,8 @@ function animatePress(currentColor) {
 $("body").keypress(function () {
   if (!started) {
     nextSequence();
-  }
+		started = true;
+  } 
 });
 
 $(".btn").click(function () {
@@ -88,4 +89,7 @@ function startOver() {
   userClickedPattern = [];
   gamePattern = [];
   level = 0;
+	score = 0;
+	$('#score span').text(score);
+	started = false;
 }
