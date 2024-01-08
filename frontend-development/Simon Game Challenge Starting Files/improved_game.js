@@ -1,6 +1,9 @@
 var gamePattern = []; // store random colors selected by comp
 var userClickedPattern = []; // store pattern selected by user
 var level = 0;
+var score = Number($("#score span").text());
+var highScore = Number($("#score p").text());
+
 var started = false;
 var buttonColors = ["red", "blue", "green", "yellow"]; // colors of the various buttons
 
@@ -36,9 +39,9 @@ function animatePress(currentColor) {
 }
 
 $("body").keypress(function () {
-	if (!started) {
-		nextSequence();
-	} 
+  if (!started) {
+    nextSequence();
+  }
 });
 
 $(".btn").click(function () {
@@ -47,9 +50,9 @@ $(".btn").click(function () {
   userClickedPattern.push(userChosenColor);
   // console.log("user pattern: " + userClickedPattern);
   playSound(userChosenColor);
-	// get the last index of latest chosen color
-	let latestChosenColor = userClickedPattern.lastIndexOf(userChosenColor);
-  checkAnswer(latestChosenColor); 
+  // get the last index of latest chosen color
+  let latestChosenColor = userClickedPattern.lastIndexOf(userChosenColor);
+  checkAnswer(latestChosenColor);
 });
 
 function checkAnswer(checkLevel) {
@@ -61,6 +64,9 @@ function checkAnswer(checkLevel) {
         userClickedPattern = [];
         nextSequence();
       }, 1000);
+      // increase user score sequence is gotten correctly
+      score = score + 1;
+      $("#score span").text(score);
     }
   } else {
     // console.log("wrong");
@@ -69,13 +75,17 @@ function checkAnswer(checkLevel) {
     setTimeout(() => {
       $("body").removeClass("game-over");
     }, 200);
-    $("h1").text("Game Over, Press Any Key to Restart");
-		startOver();
+    $("#level-title").text("Game Over, Press Any Key to Restart");
+    score > highScore
+      ? $("#score p").text(score)
+      : $("#score p").text(highScore);
+    startOver();
   }
 }
 
+// restarted the game when user fails
 function startOver() {
-	userClickedPattern = []
-	gamePattern = []
-	level = 0;
+  userClickedPattern = [];
+  gamePattern = [];
+  level = 0;
 }

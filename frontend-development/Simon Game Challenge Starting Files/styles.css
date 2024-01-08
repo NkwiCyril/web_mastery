@@ -3,6 +3,26 @@ body {
   background-color: #011F3F;
 }
 
+#score {
+  width: 10%;
+  color: #FEF2BF;
+  background-color: #011F3F;
+  border: 3px solid #FEF2BF;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  flex-direction: column;
+}
+
+#score span {
+  margin: 15px 0;
+}
+
+#score p {
+  margin: 15px 0;
+}
+
 #level-title {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
