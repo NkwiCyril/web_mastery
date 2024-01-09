@@ -1,11 +1,10 @@
+var buttonColors = ["red", "blue", "green", "yellow"]; // colors of the various buttons
 var gamePattern = []; // store random colors selected by comp
 var userClickedPattern = []; // store pattern selected by user
-var level = 0;
-var score = Number($("#score span").text());
+var level = 0; // starting level
+var score = Number($("#score span").text()); 
 var highScore = Number($("#score p").text());
-
 var started = false;
-var buttonColors = ["red", "blue", "green", "yellow"]; // colors of the various buttons
 
 function playSound(colorName) {
   let audio = new Audio(`./sounds/${colorName}.mp3`);
