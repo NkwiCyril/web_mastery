@@ -19,7 +19,7 @@ inquirer
     const url = answers.URL;
 
     var qr_png = qr.image(url);
-    qr_png.pipe(fs.createWriteStream("qrcode.png"));
+    qr_png.pipe(fs.createWriteStream("qr_code_image.png"));
 
     fs.writeFile("answers.txt", url, (err) => { // write url onto the answers.txt file
       if (err) throw err;
