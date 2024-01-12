@@ -1,0 +1,17 @@
+{
+  "name": "qrcode_gen",
+  "version": "1.0.0",
+  "description": "Genrating the qr code code in the browser using express and http request",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nkwi Cyril",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "inquirer": "^9.2.12",
+    "qr-image": "^3.2.0"
+  }
+}
