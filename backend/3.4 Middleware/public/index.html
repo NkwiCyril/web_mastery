@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Band Name Generator</title>
+  </head>
+  <style>
+    * {
+      font-family: "Source Code Pro", "sans-serif";
+    }
+
+    body {
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form {
+      background-color: rgb(247, 247, 247);
+      border-radius: 5px;
+      max-width: 30%;
+      padding: 10px;
+    }
+
+    input {
+      border: 1px solid #000;
+      margin-bottom: 10px;
+      height: 20px;
+    }
+
+    label {
+      font-size: 20px;
+    }
+
+    .submit {
+      margin: 12px auto;
+      width: 20%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+
+  <body>
+    <div class="form">
+      <h1>Band Name Generator</h1>
+      <form action="/submit" method="POST">
+        <label for="street">Street Name:</label>
+        <input type="text" name="street" required />
+        <label for="pet">Pet Name:</label>
+        <input type="text" name="pet" required />
+        <input type="submit" value="Submit" class="submit"/>
+      </form>
+    </div>
+  </body>
+</html>
