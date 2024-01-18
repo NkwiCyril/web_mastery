@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Secrets</title>
+  </head>
+  <style>
+    * {
+      font-family: "Source Code Pro", "sans-serif";
+    }
+
+    body {
+      margin: 0 auto;
+      /* height: 100vh; */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form {
+      background-color: rgb(247, 247, 247);
+      border-radius: 5px;
+      max-width: 30%;
+      padding: 10px;
+    }
+
+    input {
+      border: 1px solid #000;
+      margin-bottom: 10px;
+      height: 30px;
+      font-size: 17px;
+    }
+
+    label {
+      font-size: 17px;
+    }
+
+    .submit {
+      margin: 12px auto;
+      width: 20%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  <body>
+    <h1>Secrets</h1>
+    <div class="form"></div>
+    
+    <form action="/check" method="POST">
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" required />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
