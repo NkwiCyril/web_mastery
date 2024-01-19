@@ -29,11 +29,14 @@ app.get("/", (req, res) => {
 });
 
 app.post("/check", (req, res) => {
-  if (authorized)
+  if (authorized) {
     // check if password is the correct password in order to access secret file
     setInterval(() => {
       res.sendFile(__dirname + "/public/secret.html");
     }, 2000); // delay for some time before displaying the secret file
+  } else {
+    res.sendFile(__dirname + "/public/index.html")
+  }
 });
 
 app.listen(port, () => {
