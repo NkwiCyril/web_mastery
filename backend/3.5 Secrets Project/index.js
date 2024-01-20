@@ -35,7 +35,9 @@ app.post("/check", (req, res) => {
       res.sendFile(__dirname + "/public/secret.html");
     }, 2000); // delay for some time before displaying the secret file
   } else {
-    res.sendFile(__dirname + "/public/index.html")
+    // res.sendFile(__dirname + "/public/index.html")
+    res.redirect("/")
+    authorized = false;
   }
 });
 
