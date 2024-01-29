@@ -9,9 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.listen(PORT, () => {
-  console.log(`Steady on http://localhost/${PORT}`);
+  console.log(`Steady on http://localhost:${PORT}`);
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.ejs");
+  res.send("Enter the dragon");
 });
