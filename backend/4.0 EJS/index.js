@@ -16,12 +16,18 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+  // use the render() method in order to render dynamic files whose content may change like ejs files
+  const day = new Date().getDay();
+  if (day < 6 && day > 1) {
+    res.render(__dirname + "/views/index.ejs", {
+      dayType: "weekday.",
+      advice: "It's time to work harder."
+    });
+  } else {
+    res.render(__dirname + "/views/index.ejs", {
+      dayType: "weekend.",
+      advice: "It's time to have some fun."
+    });
+  }
 });
 
-app.post("/info", (req, res) => {
-  res.render(__dirname + "/views/index.ejs", {
-    dayType: req.body["dayType"],
-    advice: req.body["advice"],
-  });
-});
