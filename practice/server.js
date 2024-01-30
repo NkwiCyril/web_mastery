@@ -27,7 +27,7 @@ app.get("/fan_page", (req, res) => {
 
 app.post("/credentials", (req, res) => {
   console.log(req.body);
-  let credArray = Object.values(req.body); // array of user credential. values from json file
+  let credArray = Object.values(req.body); // array of user credential. values from json file1
   console.log(credArray)
   console.log(__dirname);
   res.sendFile(__dirname + "/welcome.html")
