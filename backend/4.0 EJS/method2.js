@@ -16,12 +16,12 @@ app.get("/", (req, res) => {
   let adv = "It's time to have some fun.";
 
   if (today === 6 || today === 0) {
-    res.render(__dirname + "/views/index.ejs", {
+    res.render("index.ejs", {
       dayType: dayT,
       advice: adv,
     });
   }
-  res.render(__dirname + "/views/index.ejs", {
+  res.render("index.ejs", {
     dayType: "weekday.",
     advice: "It's time to work harder.",
   });
