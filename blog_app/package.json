@@ -1,0 +1,16 @@
+{
+  "name": "blog_app",
+  "version": "1.0.0",
+  "description": "Blog web application for users to create, update, view and delete their blog posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "realDeveloper_NCA",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
