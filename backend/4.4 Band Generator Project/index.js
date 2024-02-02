@@ -4,9 +4,10 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
-//custom middleware to generate band name
+var currentYear = new Date().getFullYear();
 var generatedBandName = "";
 
+//custom middleware to generate band name
 var bandNameGenerator = (req, res, next) => {
   const adjLength = adj.length;
   const nounLength = noun.length;
@@ -19,11 +20,11 @@ var bandNameGenerator = (req, res, next) => {
   next();
 };
 
-app.use(bandNameGenerator)
+// use bandNameGenerator middleware
+app.use(bandNameGenerator);
 
+// get and make use of static files in the public folder
 app.use(express.static("public"));
-
-var currentYear = new Date().getFullYear();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -36,14 +37,13 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
   res.render("index.ejs", {
     year: currentYear,
-    bandName: generatedBandName
+    bandName: generatedBandName,
   });
 });
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
 
 const adj = [
   "abandoned",
