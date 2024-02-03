@@ -42,9 +42,9 @@
 <div class="container row-xxl-8 px-4 py-5">
   <h5 class="text-body-secondary py-2">Recent blogs</h5>
   <div class="blog-container">
-    <%- include("partials/card.ejs") %> <%- include("partials/card.ejs") %> <%-
-    include("partials/card.ejs") %> <%- include("partials/card.ejs") %> <%-
-    include("partials/card.ejs") %> <%- include("partials/card.ejs") %>
+    <% blogs.forEach(blog => { %>
+      <%- include("partials/card", blog) %>
+   <% }); %>
   </div>
 </div>
 

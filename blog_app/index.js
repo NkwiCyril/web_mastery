@@ -9,12 +9,12 @@ var createdBlogs = [];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.listen(PORT, () => {
-  console.log(`Steady on port http://localhost:${PORT}`);
-});
+
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", {
+    blogs: createdBlogs
+  });
 });
 
 app.get("/create", (req, res) => {
@@ -26,14 +26,19 @@ app.get("/view", (req, res) => {
 })
 
 app.get("/edit", (req, res) => {
-  res.render("create.ejs")
+  res.render("create.ejs");
 })
 
 app.post("/", (req, res) => {
   createdBlogs.push(req.body);
-  console.log(createdBlogs);
-  res.render("index.ejs");
+  res.render("index.ejs", {
+    blogs: createdBlogs
+  });
+  
 });
 
-
+app.listen(PORT, () => {
+  console.log(`Steady on port http://localhost:${PORT}`);
+  console.log(createdBlogs)
+});
 
