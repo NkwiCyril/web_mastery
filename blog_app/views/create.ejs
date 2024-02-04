@@ -1,18 +1,20 @@
 <%- include("partials/header.ejs") %>
 
-<div class="container form-container">
-  <form action="/" method="post">
-    <label for="title">Title:</label>
-    <input type="text" name="title" required />
-    <label for="content">Content:</label>
+<div class="container">
+  <form action="/" method="post" class="form-container">
+    <label for="title" class="my-2">Blog Title</label>
+    <input type="text" name="title"  class="py-1 px-2" required />
+    <label for="content" class="my-2">Blog Content</label>
     <textarea
       name="content"
       id="content"
       cols="30"
       rows="10"
       placeholder="Insert blog content"
+      required
+      
     ></textarea>
-    <input type="submit" value="Create Post">
+    <input type="submit" value="Create Blog" class="p-2 btn btn-dark  submit">
   </form>
 </div>
 
