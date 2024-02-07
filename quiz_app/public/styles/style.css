@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Exo", sans-serif;
+}
+
+/* footer.ejs styling */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer h3 {
+  padding: 10px;
+}
