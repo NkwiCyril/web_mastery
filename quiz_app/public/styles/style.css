@@ -8,13 +8,16 @@
 
 body {
   background-color: #cbd5e1;
-  margin-top: 50px;
 }
 
 /* home.ejs styling */
 
 .container {
-  margin: 0 auto;
+  margin: 50px auto;
+}
+
+.container,
+.form-container {
   padding: 10px;
   width: fit-content;
   text-align: left;
@@ -22,12 +25,16 @@ body {
   border-radius: 8px;
 }
 
-.btn {
+.btn,
+.call-to-action {
   display: flex;
   justify-content: center;
+  gap: 20px;
+  margin: 20px;
 }
 
-.btn button {
+.btn button,
+input {
   padding: 10px 15px;
   font-size: 15px;
   border: none;
@@ -35,10 +42,46 @@ body {
   cursor: pointer;
 }
 
-.btn button:hover {
-    background-color: #2a2a38;
-    color: white;
-    transition: all ease-in-out .3s;
+.btn button:hover,
+input:hover {
+  background-color: #2a2a38;
+  color: white;
+  transition: all ease-in-out 0.3s;
+}
+
+/* styling of question sections */
+
+.form-container {
+  margin: 0 auto;
+}
+
+.sec2-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+}
+
+input[type="radio"] {
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #0066e2;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }
 
 /* footer.ejs styling */
@@ -47,4 +90,21 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 0;
+}
+
+/* result.ejs styling */
+
+.result-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 60px;
+}
+
+.score {
+  border: 10px solid #cbd5e1;
+  padding: 40px;
+  border-radius: 50%;
 }

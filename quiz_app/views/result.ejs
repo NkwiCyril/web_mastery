@@ -1,0 +1,15 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container result-container">
+   <% if (score >= 5) { %>
+    <h1>You have passed! 🥳</h1>
+ <% } else { %>
+    <h1>You have failed! 😔</h1>
+ <% } %> 
+  <h1>Your Score</h1>
+  <div class="score">
+    <h1><%= (score * 100) / 10 + "%" %></h1>
+  </div>
+</div>
+
+

@@ -1,22 +1,30 @@
 <%- include("partials/header.ejs") %>
 
 <div class="form-container">
-  <form action="/results" method="post">
+  <form action="/results" method="post" class="sec2-form">
     <% questions.forEach(question => { %>
 
-    <h3><%=question["question"]%></h3>
-    
-    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][0] %>" required />
-    <label for="option-0"><%= question["options"][0] %></label>
-
-    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][1] %>" required />
-    <label for="option-1"><%= question["options"][1] %></label>
-
-    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][2] %>" %> required />
-    <label for="option-2"><%= question["options"][2] %></label>
-
-    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][3] %>" required />
-    <label for="option-3"><%= question["options"][3] %></label>
+        <h3><%=question["question"]%></h3>
+        <div class="option">
+          <input type="radio" name="<%=question["question"]%>" value="<%=
+          question["options"][0] %>" required />
+          <label for="option-0"><%= question["options"][0] %></label>
+        </div>
+        <div class="option">
+          <input type="radio" name="<%=question["question"]%>" value="<%=
+          question["options"][1] %>" required />
+          <label for="option-1"><%= question["options"][1] %></label>
+        </div>
+        <div class="option">
+          <input type="radio" name="<%=question["question"]%>" value="<%=
+          question["options"][2] %>" %> required />
+          <label for="option-2"><%= question["options"][2] %></label>
+        </div>
+        <div class="option">
+          <input type="radio" name="<%=question["question"]%>" value="<%=
+          question["options"][3] %>" required />
+          <label for="option-3"><%= question["options"][3] %></label>
+        </div>
 
     <% }); %>
     
@@ -25,7 +33,6 @@
         <input type="reset" value="Prev" class="previous"/>
         <input type="submit" value="Submit" />
     </div>
-  </form>
+  </form><%- include("partials/footer.ejs") %>
 </div>
 
-<%- include("partials/footer.ejs") %>
