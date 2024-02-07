@@ -4,11 +4,47 @@
   font-family: "Exo", sans-serif;
 }
 
+/* header.ejs */
+
+body {
+  background-color: #cbd5e1;
+  margin-top: 50px;
+}
+
+/* home.ejs styling */
+
+.container {
+  margin: 0 auto;
+  padding: 10px;
+  width: fit-content;
+  text-align: left;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn button {
+  padding: 10px 15px;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #2a2a38;
+    color: white;
+    transition: all ease-in-out .3s;
+}
+
 /* footer.ejs styling */
 
 footer {
   display: flex;
   justify-content: space-between;
+  padding: 0;
 }
-
-
