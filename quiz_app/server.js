@@ -9,6 +9,7 @@ app.use(express.static("public")); // make use of all static files in /public di
 
 app.listen(PORT, () => {
   console.log("Steady on http://localhost:" + PORT);
+  console.log(choosenAnswers);
 });
 
 app.get("/", (req, res) => {
@@ -18,19 +19,24 @@ app.get("/", (req, res) => {
 app.get("/section1", (req, res) => {
   // render section.ejs with first set of questions
   var firstSet = javascriptQuiz.slice(0, 5);
-  res.render("section.ejs", {
-    questions: firstSet
+  res.render("section1.ejs", {
+    questions: firstSet,
   });
 });
 
-app.post("/section2", (req, res) => {
+app.get("/section2", (req, res) => {
   // render section.ejs with the second set of questions
   var secondSet = javascriptQuiz.slice(5, javascriptQuiz.length);
-  res.render("section.ejs", {
-    questions: secondSet
+  res.render("section2.ejs", {
+    questions: secondSet,
   });
+});
+
+app.post("/results", (req, res) => {
   console.log(req.body);
 });
+
+const choosenAnswers = []
 
 const javascriptQuiz = [
   {

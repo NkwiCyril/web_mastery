@@ -1,9 +1,11 @@
 <%- include("partials/header.ejs") %>
 
 <div class="form-container">
-  <form action="/section2" method="post">
+  <form action="/section2" method="get">
     <% questions.forEach(question => { %>
+
     <h3><%=question["question"]%></h3>
+    
     <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][0] %>" required />
     <label for="option-0"><%= question["options"][0] %></label>
 
@@ -15,11 +17,12 @@
 
     <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][3] %>" required />
     <label for="option-3"><%= question["options"][3] %></label>
-    <% }); %>
 
+    <% }); %>
+    
     <div class="call-to-action">
-      <input type="reset" value="Clear" />
-      <input type="submit" value="Next" />
+        <input type="reset" value="Clear" />
+        <input type="submit" value="Next" />
     </div>
   </form>
 </div>

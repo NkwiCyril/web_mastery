@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+
+<div class="form-container">
+  <form action="/results" method="post">
+    <% questions.forEach(question => { %>
+
+    <h3><%=question["question"]%></h3>
+    
+    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][0] %>" required />
+    <label for="option-0"><%= question["options"][0] %></label>
+
+    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][1] %>" required />
+    <label for="option-1"><%= question["options"][1] %></label>
+
+    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][2] %>" %> required />
+    <label for="option-2"><%= question["options"][2] %></label>
+
+    <input type="radio" name="<%=question["question"]%>" value="<%= question["options"][3] %>" required />
+    <label for="option-3"><%= question["options"][3] %></label>
+
+    <% }); %>
+    
+    <div class="call-to-action">
+        <input type="reset" value="Clear" />
+        <input type="reset" value="Prev" class="previous"/>
+        <input type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>
