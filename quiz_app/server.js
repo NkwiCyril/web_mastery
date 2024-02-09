@@ -55,5 +55,4 @@ app.post("/results", (req, res) => {
   res.render("result.ejs", {
     score: count,
   });
-
 });
