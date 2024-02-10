@@ -25,16 +25,23 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.body);
+  // get the users choosen type in order to filter
+  const type = req.body["type"];
+  const participants = req.body["participants"];
 
-  // Step 2: Play around with the drop downs and see what gets logged.
-  // Use axios to make an API request to the /filter endpoint. Making
-  // sure you're passing both the type and participants queries.
-  // Render the index.ejs file with a single *random* activity that comes back
-  // from the API request.
-  // Step 3: If you get a 404 error (resource not found) from the API request.
-  // Pass an error to the index.ejs to tell the user:
-  // "No activities that match your criteria."
+  try {
+    const newResponse = await axios.get(
+      `https://bored-api.appbrewery.com/filter?type=${type}&participants=${participants}`
+    );
+    var responseLength = newResponse.data.length; // get the length of the data gotten
+    var randomIndex = Math.floor(Math.random() * responseLength)
+    const result = newResponse.data[randomIndex]; // select a random activity
+    res.render("index.ejs", { data: result });
+  } catch (error) {
+    // modify the error message rendered once no data is found
+    error.message = "No activities that match your criteria."
+    res.render("index.ejs", { error: error.message });
+  }
 });
 
 app.listen(port, () => {
