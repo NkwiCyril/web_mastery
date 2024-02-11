@@ -1,18 +1,17 @@
 import express from "express";
-import bodyParser from "body-parser";
 import axios from "axios";
+import 'dotenv/config'
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get("https://api.api-ninjas.com/v1/quotes", {
       headers: {
-        "X-Api-Key": "K3kUreu8JFAzTqRVgkHzRg==xbofAZNXJl68GdcW",
+        "X-Api-Key": process.env.APIKEY,
       },
     });
     const data = response.data;
