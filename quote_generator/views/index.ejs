@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <title>Quote Generator</title>
+</head>
+
+<body>
+
+  <% if (locals.result) { %>
+  <div class="quote-container">
+    <div class="category">
+      <h2><%= result.category %></h2>
+    </div>
+    <h1>"<%= result.quote %>"</h1>
+    <div class="author">
+      <h3>- <%= result.author %></h3>
+    </div>
+    <button type="button">New Quote</button>
+  </div>
+  <%  } else {%>
+  <div class="quote-container">
+    <h2><%= error %></h2>
+    <button type="button">New Quote</button>
+  </div>
+
+  <%  } %>
+
+
+</body>
+<script src="script/index.js"></script>
+
+</html>
