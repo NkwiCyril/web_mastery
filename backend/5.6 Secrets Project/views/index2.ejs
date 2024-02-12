@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main2.css" />
+    <title>Lisper</title>
+  </head>
+
+  <body>
+    <div class="quote-container">
+      <div class="category">
+        <h2><%= result.id %></h2>
+      </div>
+      <h1>"<%= result.secret %>"</h1>
+      <div class="author">
+        <h3>- <%= result.username %></h3>
+      </div>
+      <button type="button">Reveal</button>
+    </div>
+  </body>
+  <script src="script/script.js"></script>
+</html>
