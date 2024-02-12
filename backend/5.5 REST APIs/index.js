@@ -5,7 +5,7 @@ import 'dotenv/config'
 
 const app = express();
 const port = process.env.PORT;
-const API_URL = "https://secrets-api.appbrewery.com";
+const API_URL = process.env.API_URL;
 
 // HINTs: Use the axios documentation as well as the video lesson to help you.
 // https://axios-http.com/docs/post_example
