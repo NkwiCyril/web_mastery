@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>Let's Joke</title>
+  </head>
+
+  <body>
+    <% if (type === "single") { %>
+    <div class="quote-container">
+      <div class="category">
+        <h2><%= result.category %></h2>
+      </div>
+      <h1><%= result.joke %></h1>
+      <div class="author">
+        <h3>- <%= result.id %></h3>
+      </div>
+      <button type="submit">New Joke</button>
+    </div>
+    <% } else { %>
+    <div class="quote-container">
+      <div class="category">
+        <h2><%= result.category %></h2>
+      </div>
+      <h1><u>Setup: </u><%= result.setup %></h1>
+      <h1><u>Delivery: </u><%= result.delivery %></h1>
+      <div class="author">
+        <h3>- <%= result.id %></h3>
+      </div>
+      <button type="submit">New Joke</button>
+    </div>
+    <% } %>
+  </body>
+  <script src="script/script.js"></script>
+</html>
