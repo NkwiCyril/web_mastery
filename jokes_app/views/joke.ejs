@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/main.css" />
-    <title>Let's Joke</title>
-  </head>
 
-  <body>
-    <% if (type === "single") { %>
-    <div class="quote-container">
-      <div class="category">
-        <h2><%= result.category %></h2>
-      </div>
-      <h1><%= result.joke %></h1>
-      <div class="author">
-        <h3>- <%= result.id %></h3>
-      </div>
-      <button type="submit">New Joke</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <title>Let's Joke</title>
+</head>
+
+<body>
+  <% if (type === "single") { %>
+  <div class="quote-container">
+    <div class="category">
+      <h2><%= result.category %></h2>
     </div>
-    <% } else { %>
-    <div class="quote-container">
-      <div class="category">
-        <h2><%= result.category %></h2>
-      </div>
-      <h1><u>Setup: </u><%= result.setup %></h1>
-      <h1><u>Delivery: </u><%= result.delivery %></h1>
-      <div class="author">
-        <h3>- <%= result.id %></h3>
-      </div>
-      <button type="submit">New Joke</button>
+    <h1><%= result.joke %></h1>
+    <div class="author">
+      <h3>- <%= result.id %></h3>
     </div>
-    <% } %>
-  </body>
-  <script src="script/script.js"></script>
+    <button type="button" class="new-joke">New Joke</button>
+    <button type="button" class="set-category">Set Category</button>
+  </div>
+  <% } else { %>
+  <div class="quote-container">
+    <div class="category">
+      <h2><%= result.category %></h2>
+    </div>
+    <h1><u>Setup: </u><%= result.setup %></h1>
+
+    <h1><u>Delivery: </u><%= result.delivery %></h1>
+
+    <div class="author">
+      <h3>- <%= result.id %></h3>
+    </div>
+    <button class="new-joke">New Joke</button>
+    <button class="set-category">Set Category</button>
+
+  </div>
+  <% } %>
+</body>
+<script src="script/script.js"></script>
+
 </html>
