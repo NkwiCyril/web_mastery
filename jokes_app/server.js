@@ -23,6 +23,7 @@ app.post("/joke", async (req, res) => {
       const response = await axios.get(API_URL + category + "?type=" + type);
       const data = response.data;
       res.render("joke.ejs", {
+        type: type,
         result: data,
       });
     } catch (error) {
