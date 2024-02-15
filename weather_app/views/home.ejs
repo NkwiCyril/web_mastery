@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>Official Weather App</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="logo">TheForcast</h1>
+      <form action="/" method="post">
+        <input type="text" placeholder="Search Country" name="country"/>
+        <button type="submit">Search</button>
+      </form>
+      <button type="submit">Current Location</button>
+    </div>
+    <section class="weather-info">
+      <div class="visuals">
+        <div class="icon-location">
+          <div class="flex-container">
+            <div class="city"><%= response.location.name %></div>
+            <div class="country"><%= response.location.country %></div>
+            <div class="time"><%= response.location.localtime.slice(11) %></div>
+          </div>
+					<div class="image">
+						<img src= <%=response.current.condition.icon %> alt="weather-icon">
+						<p><%= response.current.condition.text %></p>
+					</div>
+        </div>
+        <div class="temperature"><%= response.current.temp_c %>°C</div>
+				<div class="convert-unit">
+					<button>Fahrenheit</button>
+				</div>
+      </div>
+      <aside class="weather-conditions">
+        <div class="condition">
+          <div class="title">Wind Speed</div>
+          <div class="value"><%= response.current.wind_kph %>kph</div>
+        </div>
+        <div class="condition">
+          <div class="title">Humidity</div>
+          <div class="value"><%= response.current.humidity %>%</div>
+        </div>
+        <div class="condition">
+          <div class="title">Precipitation</div>
+          <div class="value"><%= response.current.precip_mm %>mm</div>
+        </div>
+        <div class="condition">
+          <div class="title">Pressure</div>
+          <div class="value">
+            <%= Math.floor(response.current.pressure_mb * 0.1) %>kPa
+          </div>
+        </div>
+        <div class="condition">
+          <div class="title">Visibility</div>
+          <div class="value"><%= response.current.vis_km %>km</div>
+        </div>
+      </aside>
+    </section>
+  </body>
+</html>
