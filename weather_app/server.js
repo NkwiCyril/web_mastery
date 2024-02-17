@@ -21,7 +21,7 @@ const config = {
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(
-      api_url + "current.json?q=netherlands",
+      api_url + "current.json?q=cameroon",
       config
     );
     const data = response.data;
