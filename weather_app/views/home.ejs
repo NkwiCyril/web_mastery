@@ -30,7 +30,7 @@
         </div>
         <div class="temperature"><%= response.current.temp_c %>°C</div>
 				<div class="convert-unit">
-					<button>Fahrenheit</button>
+					<button class="temp-btn">Fahrenheit</button>
 				</div>
       </div>
       <aside class="weather-conditions">
@@ -59,4 +59,12 @@
       </aside>
     </section>
   </body>
+  <script>
+    const tempButton = document.querySelector(".temp-btn");
+    const temp = document.querySelector(".temperature")
+    tempButton.addEventListener("click", () => {
+      temp.innerHTML = "<%= response.current.temp_f %>F"
+      tempButton.innerHTML = "Celsius"
+    });
+  </script>
 </html>
