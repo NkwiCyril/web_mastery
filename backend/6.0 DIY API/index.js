@@ -9,11 +9,53 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //1. GET a random joke
 
+app.get("/random", (req, res) => {
+  const randomIndex = Math.floor(Math.random() * jokes.length);
+  const randomJoke = jokes[randomIndex]; // get a random joke from the jokes array
+  res.json(randomJoke); // send the joke in JSON format
+});
+
 //2. GET a specific joke
+
+app.get("/jokes/:id", (req, res) => {
+  const id = req.params.id;
+  // jokes.forEach((joke) => {
+  //   if (joke.id == id) {
+  //     res.json(joke);
+  //   }
+  // });
+
+  const foundJoke = jokes.find((joke) => joke.id === parseInt(id));
+  res.json(foundJoke);
+});
 
 //3. GET a jokes by filtering on the joke type
 
+app.get("/filter", (req, res) => {
+  const type = req.query.type.toLowerCase();
+  const foundJokes = jokes.filter(
+    (joke) => joke.jokeType.toLowerCase() === type
+  );
+  res.json(foundJokes);
+});
+
 //4. POST a new joke
+
+app.post("/jokes", (req, res) => {
+  const id = jokes.length + 1;
+  // get text and type inputted in the html form 
+  const text = req.body.text; 
+  const type = req.body.type;
+  // create joke obj to be pushed into the jokes array 
+  const newJoke = {
+    id: id,
+    text: text,
+    type: type,
+  };
+  jokes.push(newJoke);
+  console.log(jokes.slice(-1)); // log last element in the array
+  res.json(newJoke); // respond with that newjoke when endpoint is accessed
+});
 
 //5. PUT a joke
 
