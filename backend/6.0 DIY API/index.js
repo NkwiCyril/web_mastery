@@ -100,7 +100,27 @@ app.patch("/jokes/:id", (req, res) => {
 
 //7. DELETE Specific joke
 
+app.delete("/jokes/:id", (req, res) => {
+  // search for the joke in the array of jokes
+  // using a JS method, remove it from the list
+  // send a json response showing its successfull deletion
+
+  const id = parseInt(req.params.id);
+  const foundJokeIndex = jokes.findIndex((joke) => joke.id === id);
+  const foundJoke = jokes[foundJokeIndex];
+
+  jokes.splice(foundJokeIndex, 1);
+
+  if (!jokes.includes(foundJoke)) {
+    res.json({
+      message: "Joke successfully deleted!"
+    })
+  }
+});
+
 //8. DELETE All jokes
+
+
 
 app.listen(port, () => {
   console.log(`Successfully started server on port ${port}.`);
