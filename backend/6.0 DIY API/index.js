@@ -4,7 +4,7 @@ import "dotenv/config";
 
 const app = express();
 const port = 3000;
-const masterKey = process.env.MASTER_KEY;
+const MASTER_KEY = process.env.MASTER_KEY;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -111,22 +111,27 @@ app.delete("/jokes/:id", (req, res) => {
 
   if (jokes.includes(foundJoke)) {
     jokes.splice(foundJokeIndex, 1);
-    res.json({
-      message: "Joke successfully deleted!",
+    res.status(200).json({
+      message: "Joke " + id + " successfully deleted!",
     });
   } else {
-    res.json({
-      message: "Joke not found!",
+    res.status(404).json({
+      message: "Joke with id " + id + " not found!",
     });
   }
 });
 
 //8. DELETE All jokes
 
-app.delete("/jokes", (req, res) => {
-  jokes.splice(0, jokes.length);
-  if (jokes.indexOf(jokes[1] == -1)) {
-    res.json(jokes);
+app.delete("/all", (req, res) => {
+  const userKey = req.query.key;
+  if (userKey === MASTER_KEY) {
+    jokes.splice(0, jokes.length);
+
+    res.status(200).json(jokes);
+  } else {
+    res.status(401).send("Unauthorized!");
+    
   }
 });
 
