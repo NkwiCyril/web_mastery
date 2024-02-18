@@ -44,10 +44,10 @@ app.get("/filter", (req, res) => {
 
 app.post("/jokes", (req, res) => {
   const id = jokes.length + 1;
-  // get text and type inputted in the html form 
-  const text = req.body.text; 
+  // get text and type inputted in the html form
+  const text = req.body.text;
   const type = req.body.type;
-  // create joke obj to be pushed into the jokes array 
+  // create joke obj to be pushed into the jokes array
   const newJoke = {
     id: id,
     text: text,
@@ -59,6 +59,24 @@ app.post("/jokes", (req, res) => {
 });
 
 //5. PUT a joke
+
+app.put("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const text = req.body.text;
+  const type = req.body.type;
+
+  const oldJokeIndex = jokes.findIndex((joke) => joke.id === id);
+  var oldJoke = jokes[oldJokeIndex];
+
+  const newJoke = {
+    id: id,
+    jokeText: text,
+    jokeType: type,
+  };
+
+  oldJoke = newJoke;
+  res.json(oldJoke);
+});
 
 //6. PATCH a joke
 
