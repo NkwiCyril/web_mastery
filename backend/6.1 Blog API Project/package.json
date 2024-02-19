@@ -1,16 +1,17 @@
 {
-  "name": "blog_app",
+  "name": "6.1-blog-api-project",
   "version": "1.0.0",
-  "description": "Blog web application for users to create, update, view and delete their blog posts.",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "realDeveloper_NCA",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.7",
+    "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2"

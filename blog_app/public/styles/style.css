@@ -20,6 +20,10 @@ a {
 
 /* header.ejs styling */
 
+.btn {
+  border-radius: 0;
+} 
+
 .blog-logo {
   object-fit: cover;
   width: 20%;
