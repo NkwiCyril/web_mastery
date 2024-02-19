@@ -13,20 +13,25 @@
     <div class="col-lg-6">
       <h5 class="text-body-secondary py-2">Latest</h5>
       <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-        <%= blogs[blogs.length - 1]["title"] %>
+        <%= blogs[blogs.length - 1].title %>
       </h1>
       <p class="lead">
-        <%= blogs[blogs.length - 1]["content"] %>
+        <% if(blogs[blogs.length - 1]["content"].length > 100) { %>
+          <%= blogs[blogs.length - 1]["content"].slice(0, 100) + "..." %>
+        <% } else { %>
+          <%= blogs[blogs.length - 1]["content"] %>
+        <% } %>
       </p>
-      <p class="text-secondary"> <%= dateCreated %> </p>
+      <p class="text-secondary"> <%= blogs[blogs.length - 1].date %> </p>
+      <p class="text-secondary">By <%= blogs[blogs.length - 1].author %> </p>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a href="/view">
+        <a href="/view/<%= blogs.length %>">
           <button type="button" class="btn btn-dark btn-lg px-4 me-md-2">
             Read
           </button>
         </a>
-        <a href="/edit">
+        <a href="/edit/<%= blogs[blogs.length - 1].id %>">
           <button type="button" class="btn btn-outline-dark btn-lg px-4">
             Edit
           </button>
@@ -37,10 +42,26 @@
 </div>
 
 <div class="container row-xxl-8 px-4 py-5">
-  <h5 class="text-body-secondary py-2">Recent blogs</h5>
+  <h5 class="text-body-secondary py-2">Recent blog posts</h5>
   <div class="blog-container">
     <% blogs.slice(0, blogs.length - 1).reverse().forEach(blog => { %>
-      <%- include("partials/card", blog) %>
+      <div class="card my-2" style="width: 20rem">
+        <img src="images/bchain1.jpg" class="card-img-top " alt="blog image" />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text">
+            <% if(blog["content"] && blog["content"].length > 100) { %>
+              <%= blog["content"].slice(0, 100) + "..." %>
+            <% } else { %>
+              <%= blog.content %>
+            <% } %>            
+          </p>
+          <p class="text-secondary"><%= blog.date %></p>
+          <p class="text-secondary">By <%= blog.author %></p>
+          <a href="/view/<%= blog.id %>" class="btn btn-dark my-1">Read</a>
+          <a href="/edit/<%= blog.id %>" class="btn btn-outline-dark mx-1">Edit</a>
+        </div>
+      </div>  
    <% }); %>
   </div>
 </div>

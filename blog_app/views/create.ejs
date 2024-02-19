@@ -1,10 +1,27 @@
 <%- include("partials/header.ejs") %>
 
 <div class="container">
-  <form action="/" method="post" class="form-container">
-    <label for="title" class="my-2">Blog Title</label>
-    <input type="text" name="title"  class="py-1 px-2" required />
-    <label for="content" class="my-2">Blog Content</label>
+  <% if (locals.blog) { %>
+  <form action="/api/posts/<%= blog.id %>" method="post" class="form-container">
+    <label for="title" class="my-2" >Title</label>
+    <input type="text" name="title" class="py-1 px-2" value="<%= blog.title %>" required />
+    <label for="content" class="my-2">Content</label>
+    <textarea
+      name="content"
+      id="content"
+      cols="30"
+      rows="10"
+      required
+    > <%= blog.content %> </textarea>
+    <label for="title" class="my-2">Author</label>
+    <input type="text" name="author" class="py-1 px-2" value="<%= blog.author %>" required />
+    <input type="submit" value="<%= submit %>" class="p-2 btn btn-dark submit" />
+  </form>
+  <% } else { %>
+  <form action="/api/posts" method="post" class="form-container">
+    <label for="title" class="my-2">Title</label>
+    <input type="text" name="title" class="py-1 px-2" required />
+    <label for="content" class="my-2">Content</label>
     <textarea
       name="content"
       id="content"
@@ -12,10 +29,12 @@
       rows="10"
       placeholder="Insert blog content"
       required
-      
     ></textarea>
-    <input type="submit" value="Create Blog" class="p-2 btn btn-dark  submit">
+    <label for="title" class="my-2">Author</label>
+    <input type="text" name="author" class="py-1 px-2" required />
+    <input type="submit" value="<%= submit %>" class="p-2 btn btn-dark submit" />
   </form>
+  <% } %>
 </div>
 
 <%- include("partials/footer.ejs") %>
