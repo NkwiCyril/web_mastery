@@ -27,6 +27,7 @@ app.get("/edit/:id", async (req, res) => {
     const response = await axios.get(API_URL + "/posts/" + id);
     const data = response.data;
     res.render("create.ejs", {
+      heading: "Edit post",
       submit: "Update post",
       blog: data,
     });
@@ -39,6 +40,7 @@ app.get("/edit/:id", async (req, res) => {
 
 app.get("/create", (req, res) => {
   res.render("create.ejs", {
+    heading: "Create blog",
     submit: "Post blog",
   });
 });
