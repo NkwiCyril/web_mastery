@@ -7,6 +7,8 @@ import notes from "../model/notes.js";
 const app = express();
 const PORT = process.env.API_PORT;
 
+var lastId = notes.lastIndexOf(notes[notes.length - 1]) + 1;
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -38,7 +40,7 @@ app.get("/notes/:id", (req, res) => {
 // create or post a note
 
 app.post("/notes", (req, res) => {
-  const id = notes.length + 1;
+  const id = lastId += 1;
   const category = req.body.category;
   const content = req.body.content;
   const time = new Date().toLocaleTimeString();
@@ -51,6 +53,8 @@ app.post("/notes", (req, res) => {
     time: time,
     date: date,
   };
+
+  lastId = id;
   notes.push(newNote);
   res.json(newNote);
 });

@@ -34,11 +34,9 @@ app.get("/edit/:id", async (req, res) => {
 });
 
 app.post("/api/notes", async (req, res) => {
+  console.log(req.body);
   try {
-    const response = await axios.post(API_URL + "/notes", {
-      content: req.body.content,
-      category: req.body.category,
-    });
+    const response = await axios.post(API_URL + "/notes", req.body);
     res.redirect("/");
   } catch (error) {
     console.error(error.message);
