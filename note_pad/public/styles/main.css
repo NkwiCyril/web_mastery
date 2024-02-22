@@ -7,6 +7,130 @@
   font-family: "Noto Sans", sans-serif;
 }
 
-select {
-    font-family: "Noto Sans", sans-serif;
+body {
+  background-color: #f8fafc;
 }
+
+.container {
+  background-color: #fff;
+  width: fit-content;
+  height: auto;
+  margin: 50px auto;
+  padding: 30px 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  text-align: center;
+}
+
+img {
+  width: 30%;
+  margin: 20px;
+}
+
+form {
+  padding: 20px 0px 40px 0px;
+  text-align: center;
+}
+
+select {
+  font-family: "Noto Sans", sans-serif;
+  width: 100px;
+}
+
+input[type=text], select {
+  padding: 3px 2px;
+  margin: 0 2px;
+}
+
+input[type=text] {
+  width: 15rem;
+}
+
+
+.add-button, .edit-button, .delete-button {
+  width: 50px;
+  cursor: pointer;
+  background-color: #15803d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 3px;
+  margin: 5px 2px;
+}
+
+.add-button:hover {
+  background-color: #16a34a;
+}
+
+.btn {
+  background-color: #d97706;
+}
+
+.btn:hover {
+  background-color: #f97316;
+}
+
+/* section where notes are to be displayed */
+
+.note-display {
+  width: 100%;
+}
+
+.note-card {
+  border-radius: 5px;
+  padding: 5px 7px;
+  margin-bottom: 7px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.note-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  padding: 0 10px;
+}
+
+.edit-button {
+  background-color: #0284c7;
+}
+
+.edit-button:hover {
+  background-color: #0ea5e9;
+}
+
+.delete-button {
+  background-color: #e11d48;
+}
+
+.delete-button:hover {
+  background-color: #f43f5e;
+}
+
+p {
+  font-size: smaller;
+  padding: 5px 0;
+}
+
+.category {
+  font-weight: bold;
+}
+
+.category, .content {
+  color: black;
+}
+
+.datetime {
+  font-size: 10px;
+  font-weight: 300;
+}
+
