@@ -4,10 +4,10 @@ import "dotenv/config";
 
 import notes from "../model/notes.js";
 
-
 const app = express();
 const PORT = process.env.API_PORT;
 
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -29,7 +29,7 @@ app.get("/notes/:id", (req, res) => {
   if (notes.includes(foundNote)) {
     res.status(200).json(foundNote);
   } else {
-    res.status(200).json({
+    res.status(404).json({
       error: "Note not found",
     });
   }
@@ -52,10 +52,7 @@ app.post("/notes", (req, res) => {
     date: date,
   };
   notes.push(newNote);
-  res.json({
-    message: "Note successfully added",
-    response: newNote,
-  });
+  res.json(newNote);
 });
 
 // modify a note partially
@@ -63,15 +60,12 @@ app.post("/notes", (req, res) => {
 app.patch("/notes/:id", (req, res) => {
   const id = req.params.id;
   const searchNote = notes.find((note) => note.id === parseInt(id));
-  if (notes.includes(searchNote)) {
-    if (req.body.category) searchNote.category = req.body.category;
-    if (req.body.content) searchNote.content = req.body.content;
-  } else {
-    res.status(404).json({
-      message: "Unable to edit note.",
-    });
-  }
-  res.status(200).json(searchNote)
+  if (!searchNote)return res.status(404).json({message: "Unable to find note.",});
+
+  if (req.body.category) searchNote.category = req.body.category;
+  if (req.body.content) searchNote.content = req.body.content;
+
+  res.status(200).json(searchNote);
 });
 
 // delete a note
@@ -83,12 +77,11 @@ app.delete("/notes/:id", (req, res) => {
     notes.splice(searchIndex, 1);
     res.status(200).json({
       message: "Note successfully deleted.",
-      response: notes
-    })
+      response: notes,
+    });
   } else {
     res.status(404).json({
       message: "Unable to find note.",
-      
     });
   }
 });

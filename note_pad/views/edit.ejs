@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/main.css" />
-    <title>NotePad</title>
+    <title>Edit Note</title>
   </head>
 
   <body>
@@ -13,12 +13,13 @@
         <img src="/images/note_logo.jpg" alt="note_pad_logo" />
       </div>
       <div class="form">
-        <form action="/api/notes" method="POST">
+        <form action="/api/notes/<%= note.id %>" method="post">
           <input
             type="text"
             name="content"
-            required
+            value="<%= note.content %>"
             placeholder="Type a note"
+            required
           />
           <select
             name="category"
@@ -38,25 +39,10 @@
             <option value="Meeting">Meeting</option>
             <option value="Project">Project</option>
           </select>
-          <button type="submit" title="add note" class="add-button">Add</button>
+          <button type="submit" title="add note" class="add-button btn">
+            Update
+          </button>
         </form>
-        <div class="note-display">
-          <% if (locals.notes) { %>
-            <% notes.reverse().forEach(note => { %>
-              <div class="note-card">
-                <p class="category"><%= note.category %></p>
-                <div class="note-space">
-                  <div class="content"><%= note.content %></div>
-                  <div class="buttons">
-                    <a href="/edit/<%= note.id %>"><button class="edit-button">Edit</button></a>
-                    <a href="/api/notes/delete/<%= note.id %>"><button class="delete-button">Delete</button></a>
-                  </div>
-                </div>
-                <p class="datetime"><%= note.time %> • <%= note.date %></p>
-              </div>
-            <% }); %>
-          <% } %>
-        </div>
       </div>
     </div>
   </body>
