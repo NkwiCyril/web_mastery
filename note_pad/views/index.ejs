@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <title>NotePad</title>
-</head>
-<body>
-    
-</body>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="/images/note_logo.jpg" alt="note_pad_logo" />
+      </div>
+      <div class="form">
+        <form action="/api/notes" method="post">
+          <input
+            type="text"
+            name="content"
+            required
+            placeholder="Type a note"
+          />
+          <select
+            name="category"
+            id="category"
+            title="Add note category"
+            required
+          >
+            <option value="">Category</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Educational">Study</option>
+            <option value="Research">Research</option>
+            <option value="Creative">Creative</option>
+            <option value="Travel">Travel</option>
+            <option value="head">Health</option>
+            <option value="Financial">Finance</option>
+            <option value="Meeting">Meeting</option>
+            <option value="Project">Project</option>
+          </select>
+          <button type="submit" title="add note" class="add-button">Add</button>
+        </form>
+        <div class="note-display">
+          <div class="note-card">
+            <div class="note">This is the first note</div>
+            <div class="buttons">
+              <a href=""><button class="edit-button">Edit</button></a>
+              <a href=""><button class="delete-button">Delete</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
