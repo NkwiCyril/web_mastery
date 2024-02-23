@@ -60,7 +60,7 @@ app.get("/api/posts/delete/:id", async (req, res) => {
 app.post("/api/posts/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const response = await axios.patch(API_URL + "/posts/" + id);
+    const response = await axios.patch(API_URL + "/posts/" + id, req.body);
     res.redirect("/");
   } catch (error) {
     res.json({
