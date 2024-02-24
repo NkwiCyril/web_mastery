@@ -91,7 +91,7 @@ app.delete("/notes/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Steady on http://localhost:${PORT}`);
+  console.log(`API running on http://localhost:${PORT}`);
 });
 
 // send("Live on port " + PORT)
