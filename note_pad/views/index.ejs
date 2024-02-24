@@ -29,7 +29,7 @@
             <option value="">Category</option>
             <option value="Personal">Personal</option>
             <option value="Work">Work</option>
-            <option value="Educational">Study</option>
+            <option value="Study">Study</option>
             <option value="Research">Research</option>
             <option value="Creative">Creative</option>
             <option value="Travel">Travel</option>
@@ -42,7 +42,7 @@
         </form>
         <div class="note-display">
           <% if (locals.notes) { %>
-            <% notes.reverse().forEach(note => { %>
+            <% notes.forEach(note => { %>
               <div class="note-card">
                 <p class="category"><%= note.category %></p>
                 <div class="note-space">
