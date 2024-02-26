@@ -42,7 +42,7 @@ app.post("/results", (req, res) => {
   var setOneAnswers = Object.values(choosenAnswers[0]);
   var setTwoAnswers = Object.values(choosenAnswers[1]);
 
-  var ansArray = [...setOneAnswers, ...setTwoAnswers];
+  var ansArray = [...setOneAnswers, ...setTwoAnswers]; // get each answer from each set and place in the array
 
   var count = 0;
 
