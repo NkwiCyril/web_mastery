@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Figtree", "Times New Roman", Times, serif;
+}
+
+body {
+  background-color: #f8fafc;
+}
+
+/* ==================== */
+/* work on start.ejs */
+/* ==================== */
+
+.start-container {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+form {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.start-container button {
+  width: fit-content;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 5px;
+  margin: 10px 2px;
+  font-size: 16px;
+}
+
+.start-container button:hover {
+  background-color: rgba(0, 0, 0, 0.824);
+  transition: all ease-in-out 0.2s;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+
+input[type="text"] {
+  padding: 5px 2px;
+  margin: 0 2px;
+  outline: none;
+  font-size: 16px;
+}
+
+/* ==================== */
+/* work on index.ejs */
+/* ==================== */
+
+main {
+  height: 92vh;
+}
+
+/* welcome section */
+.welcome {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+}
+
+img {
+  width: 30%;
+  margin: 15px;
+}
+
+.container {
+  width: fit-content;
+  margin: 30px auto;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.2); */
+}
+
+select {
+  padding: 5px;
+  margin: 0 2px;
+  font-size: 16px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 40
+}
+
+.add-button,
+.edit-button,
+.delete-button {
+  width: fit-content;
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 3px;
+  margin: 5px 2px;
+  font-size: 20px;
+}
+
+.add-button:hover {
+  color: #33a933;
+  transition: all ease-in-out .2s;
+}
+
+.edit-button:hover {
+  color: #0ea5e9;
+  transition: all ease-in-out .2s;
+
+}
+
+.delete-button:hover {
+  transition: all ease-in-out .2s;
+  color: #f43f5e;
+}
+
+/* ==================== */
+/* task display section */
+/* ==================== */
+
+.task-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.status {
+  width: 100%;
+  height: fit-content;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status h3 span {
+  padding: 0px 5px;
+}
+
+hr {
+  margin: 7px;
+  width: 95%;
+  color: rgba(0, 0, 0, 0.276);
+}
+
+.task-card {
+  border-radius: 5px;
+  padding: 5px 7px;
+  margin-bottom: 7px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  width: 95%;
+}
+
+.task-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  padding: 5px 0;
+}
+
+.done-btn, .pending-btn {
+  background-color: black;
+  color: wheat;
+  border-radius: 50%;
+  padding: 3px;
+
+}
+
+.current-status {
+  font-weight: bold;
+}
+
+.current-status,
+.content {
+  color: black;
+}
+
+.btns-datetime {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.datetime {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.done h3,
+.in-progress h3,
+.to-do h3 {
+  border-radius: 20px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+.to-do h3, .not-started-btn {
+  background-color: #e3e2e0;
+  color: #464440;
+}
+
+.not-started-btn:hover {
+  transition: all ease-in-out .2s;
+
+}
+
+.in-progress h3, .pending-btn {
+  background-color: #d3e5ef;
+  color: #465f70;
+}
+
+.pending-btn:hover {
+  background-color: #0284c7;
+  color: #38bdf8;
+  transition: all ease-in-out .2s;
+}
+
+.done h3, .done-btn {
+  background-color: #dbeddb;
+  color: #324d3d;
+}
+
+.done-btn:hover {
+  background-color: #16a34a;
+  color: #4ade80;
+  transition: all ease-in-out .2s;
+
+}
+
+.to-do .task-card {
+  border-left: 5px solid #cbcbca;
+}
+
+.in-progress .task-card {
+  border-left: 5px solid #cae1ee;
+}
+
+.done .task-card {
+  border-left: 5px solid #cfeccf;
+}
+
+footer p {
+  font-size: smaller;
+}
