@@ -1,0 +1,123 @@
+<%- include("partials/header.ejs") %>
+
+  <body>
+    <main>
+      <header class="welcome">
+        <div class="logo">
+          <img src="/images/note_logo.jpg" alt="taskflow_logo" />
+        </div>
+        <h1>Welcome, <%= name %>.</h1>
+
+        <!-- <h2>TaskFlow Dashboard</h2> -->
+      </header>
+
+      <section class="container">
+        <div class="form">
+          <form action="" method="POST">
+            <input type="text" name="content" required placeholder="Input task" />
+            <select name="status" id="status" title="Add task status" required>
+              <option value="">Status</option>
+              <option value="todo">To Do (Not Started)</option>
+              <option value="inprogress">In Progress (Started)</option>
+              <option value="done">Done (Complete)</option>
+            </select>
+            <button type="submit" title="add task" class="add-button">
+              <span class="material-symbols-outlined add_task"> add_task </span>
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="task-display">
+        <aside class="status to-do">
+          <h3><span class="material-symbols-outlined"> list_alt </span>To Do</h3>
+          <hr />
+          <div class="task-card gray">
+            <!-- <p class="current-status">todo</p> -->
+            <div class="status-buttons">
+              <a href=""><button class="edit-button" title="mark as pending">
+                  <span class="material-symbols-outlined pending-btn"> pending </span>
+                </button></a>
+              <a href=""><button class="delete-button" title="mark as done">
+                  <span class="material-symbols-outlined done-btn"> done </span>
+                </button></a>
+            </div>
+            <div class="task-space">
+              <div class="content">Develop a feature-rich task manager application that helps users efficiently
+                organize, prioritize, and track their tasks and projects.</div>
+            </div>
+            <div class="btns-datetime">
+              <p class="datetime">1:22:23 • 2/28/2024</p>
+              <div class="buttons">
+                <a href=""><button class="edit-button" title="Edit task">
+                    <span class="material-symbols-outlined"> border_color </span>
+                  </button></a>
+                <a href=""><button class="delete-button" title="Delete task">
+                    <span class="material-symbols-outlined"> delete </span>
+                  </button></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <aside class="status in-progress">
+          <h3>
+            <span class="material-symbols-outlined"> pending </span>In Progress
+          </h3>
+          <hr />
+          <div class="task-card">
+            <div class="status-buttons">
+              <a href=""><button class="edit-button" title="mark as pending">
+                  <span class="material-symbols-outlined pending-btn"> pending </span>
+                </button></a>
+              <a href=""><button class="delete-button" title="mark as done">
+                  <span class="material-symbols-outlined done-btn"> done </span>
+                </button></a>
+            </div>
+            <div class="task-space">
+              <div class="content">task content</div>
+            </div>
+            <div class="btns-datetime">
+              <p class="datetime">1:22:23 • 2/28/2024</p>
+              <div class="buttons">
+                <a href=""><button class="edit-button" title="Edit task">
+                    <span class="material-symbols-outlined"> border_color </span>
+                  </button></a>
+                <a href=""><button class="delete-button" title="Delete task">
+                    <span class="material-symbols-outlined"> delete </span>
+                  </button></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <aside class="status done">
+          <h3><span class="material-symbols-outlined"> task_alt </span> Done</h3>
+          <hr />
+          <div class="task-card">
+            <div class="status-buttons">
+              <a href=""><button class="edit-button" title="mark as pending">
+                  <span class="material-symbols-outlined pending-btn"> pending </span>
+                </button></a>
+              <a href=""><button class="delete-button" title="mark as done">
+                  <span class="material-symbols-outlined done-btn"> done </span>
+                </button></a>
+            </div>
+            <div class="task-space">
+              <div class="content">task content</div>
+            </div>
+            <div class="btns-datetime">
+              <p class="datetime">1:22:23 • 2/28/2024</p>
+              <div class="buttons">
+                <a href=""><button class="edit-button" title="Edit task">
+                    <span class="material-symbols-outlined"> border_color </span>
+                  </button></a>
+                <a href=""><button class="delete-button" title="Delete task">
+                    <span class="material-symbols-outlined"> delete </span>
+                  </button></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+        
+      </section>
+    </main>
+  </body>
+  <%- include("partials/footer.ejs") %>
