@@ -32,7 +32,7 @@ app.get("/api/tasks/:id", (req, res) => {
 app.get("/api/filter", (req, res) => {
   const { status } = req.query;
   const filteredTasks = tasks.filter(
-    (task) => task.status.toLowerCase() === status.toLowerCase()
+    (task) => task.status === status
   );
 
   res.status(200).json(filteredTasks);
