@@ -84,3 +84,5 @@ select * from customers ORDER BY customerId
 -- deleting a record from a table
 
 delete from customers where customerid=21
+
+update customers set customername='Better Focus Tech' where city='Buea'
