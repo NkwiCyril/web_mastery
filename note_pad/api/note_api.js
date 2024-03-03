@@ -11,7 +11,6 @@ var lastId = notes.lastIndexOf(notes[notes.length - 1]) + 1;
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.status(200).send("Ready to go!");
