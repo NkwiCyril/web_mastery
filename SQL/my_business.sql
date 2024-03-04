@@ -44,3 +44,12 @@ create table orders(
 )
 
 select * from orders
+
+select orders.order_number, customers.first_name, customers.last_name, customers.address, products.name as product_name
+from ((orders
+inner join customers  on orders.customer_id = customers.id) 
+inner join products on orders.product_id = products.id)
+
+select * from capitals
+insert into capitals (id, country, capital) values (251, 'Yahoo', 'USA')
+delete from capitals where id=251
