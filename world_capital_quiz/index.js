@@ -4,12 +4,14 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
+// quiz object
 let quiz = [
   { country: "France", capital: "Paris" },
   { country: "United Kingdom", capital: "London" },
   { country: "United States of America", capital: "New York" },
 ];
 
+// holds number of correctly answered questions
 let totalCorrect = 0;
 
 // Middleware
