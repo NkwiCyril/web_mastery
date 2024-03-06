@@ -24,16 +24,15 @@ app.get("/api/tasks", (req, res) => {
 app.get("/api/tasks/:id", (req, res) => {
   const id = req.params.id;
   const foundById = tasks.find((task) => task.id === parseInt(id));
-
-  res.json(foundById);
+  (foundById == undefined)
+    ? res.json({ message: "Task " + id + " not found " })
+    : res.json(foundById)
 });
 
 // filter tasks by status [in_progress, todo, done]
 app.get("/api/filter", (req, res) => {
   const { status } = req.query;
-  const filteredTasks = tasks.filter(
-    (task) => task.status === status
-  );
+  const filteredTasks = tasks.filter((task) => task.status === status);
 
   res.status(200).json(filteredTasks);
 });
@@ -82,9 +81,7 @@ app.delete("/api/tasks/:id", (req, res) => {
       message: "Unable to find task.",
     });
   }
-})
-
-
+});
 
 app.listen(PORT, () => {
   console.log(`API steady on http://localhost:${PORT}`);
