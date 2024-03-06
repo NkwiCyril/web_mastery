@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import "dotenv/config";
 
-
 const app = express();
 const port = process.env.PORT;
 var quiz = [];
@@ -27,13 +26,6 @@ db.query("SELECT * from capitals", (err, res) => {
   }
   db.end();
 });
-
-// quiz object
-// let quiz = [
-//   { country: "France", capital: "Paris" },
-//   { country: "United Kingdom", capital: "London" },
-//   { country: "United States of America", capital: "New York" },
-// ];
 
 // holds number of correctly answered questions
 let totalCorrect = 0;
