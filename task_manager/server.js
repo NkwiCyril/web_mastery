@@ -2,7 +2,6 @@ import express, { response } from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import "dotenv/config";
-import { name } from "ejs";
 
 const app = express();
 const PORT = process.env.APP_PORT;
@@ -100,11 +99,13 @@ app.get("/delete/:id", async (req, res) => {
 app.get("/pending/:id", async (req, res) => {
   try {
     await axios.patch(API_URI + "api/tasks/" + req.params.id, {
-      status: "inprogress"
+      status: "inprogress",
     });
-    res.redirect("/home")
+    res.redirect("/home");
   } catch (error) {
-    res.status(404).send("Unable to change task status task. Go back and try again.");
+    res
+      .status(404)
+      .send("Unable to change task status task. Go back and try again.");
     console.error(error.message);
   }
 });
@@ -112,11 +113,13 @@ app.get("/pending/:id", async (req, res) => {
 app.get("/todo/:id", async (req, res) => {
   try {
     await axios.patch(API_URI + "api/tasks/" + req.params.id, {
-      status: "todo"
+      status: "todo",
     });
-    res.redirect("/home")
+    res.redirect("/home");
   } catch (error) {
-    res.status(404).send("Unable to change task status task. Go back and try again.");
+    res
+      .status(404)
+      .send("Unable to change task status task. Go back and try again.");
     console.error(error.message);
   }
 });
@@ -124,11 +127,13 @@ app.get("/todo/:id", async (req, res) => {
 app.get("/done/:id", async (req, res) => {
   try {
     await axios.patch(API_URI + "api/tasks/" + req.params.id, {
-      status: "done"
+      status: "done",
     });
-    res.redirect("/home")
+    res.redirect("/home");
   } catch (error) {
-    res.status(404).send("Unable to change task status task. Go back and try again.");
+    res
+      .status(404)
+      .send("Unable to change task status task. Go back and try again.");
     console.error(error.message);
   }
 });
