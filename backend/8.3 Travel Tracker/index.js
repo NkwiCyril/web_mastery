@@ -7,49 +7,51 @@ const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-// app.use(express.json());
+app.use(express.json());
 
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  // password: "nkwicyril2002.",
+  password: "nkwicyril2002.",
   database: "world_map",
   port: 5432,
 });
 
 db.connect();
 
-var codes = [];
-
-db.query("select * from countries", (err, res) => {
-  if (!err) {
-    codes = res.rows;
-    console.log(codes);
-  } else {
-    console.error(err.message);
-  }
-  db.end()
-});
-
-app.get("/", (req, res) => {
-  //Write your code here.
+app.get("/", async (req, res) => {
+  // get visited countries from the database 
+  // empty at first until countries are added in the /add route
+  const visited_countries = await db.query("SELECT * FROM visited_countries");
+  var countries = [];
+  // extract country_codes of all visited countries and add to countries array
+  visited_countries.rows.forEach((country) => {
+    countries.push(country.country_code);
+  });
   res.render("index.ejs", {
-    total: codes.length,
-    countries: codes,
+    total: countries.length,
+    countries: countries,
   });
 });
 
-app.post("/add", (req, res) => {
-  var selectedCountries = [];
+app.post("/add", async (req, res) => {
   const selectedCountry = req.body.country;
-  const foundCountry = codes.find(
-    (country) => selectedCountry === country.country_name
-  );
-  selectedCountries.push(foundCountry.country_code);
-  res.render("index.ejs", {
-    countries: selectedCountries,
-    total: codes.length
-  })
+  try {
+    const country_codes = await db.query(
+      "SELECT country_code FROM countries WHERE country_name = $1",
+      [selectedCountry]
+    );
+    if (country_codes.rows.length !== 0) {
+      const countryCode = country_codes.rows[0].country_code;
+      await db.query(
+        "INSERT INTO visited_countries (country_code, country_name) VALUES ($1, $2)",
+        [countryCode, selectedCountry]
+      );
+      res.redirect("/"); 
+    }
+  } catch (error) {
+    console.error(error.message);
+  } 
 });
 
 app.listen(port, () => {
