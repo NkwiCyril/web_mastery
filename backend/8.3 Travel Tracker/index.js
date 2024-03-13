@@ -20,7 +20,7 @@ const db = new pg.Client({
 db.connect();
 
 app.get("/", async (req, res) => {
-  // get visited countries from the database 
+  // get visited countries from the database
   // empty at first until countries are added in the /add route
   const visited_countries = await db.query("SELECT * FROM visited_countries");
   var countries = [];
@@ -34,24 +34,49 @@ app.get("/", async (req, res) => {
   });
 });
 
+// add a new country
 app.post("/add", async (req, res) => {
   const selectedCountry = req.body.country;
   try {
     const country_codes = await db.query(
-      "SELECT country_code FROM countries WHERE country_name = $1",
-      [selectedCountry]
+      "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
+      [selectedCountry.toLowerCase()]
     );
-    if (country_codes.rows.length !== 0) {
-      const countryCode = country_codes.rows[0].country_code;
+    const countryCode = country_codes.rows[0].country_code;
+    console.log(countryCode);
+    try {
       await db.query(
         "INSERT INTO visited_countries (country_code, country_name) VALUES ($1, $2)",
         [countryCode, selectedCountry]
       );
-      res.redirect("/"); 
+      res.redirect("/");
+    } catch (error) {
+      console.log(error.message);
+      const visited_countries = await db.query(
+        "SELECT * FROM visited_countries"
+      );
+      var countries = [];
+      visited_countries.rows.forEach((country) => {
+        countries.push(country.country_code);
+      });
+      res.render("index.ejs", {
+        countries: countries,
+        total: countries.length,
+        error: "Country has already been added, try again.",
+      });
     }
   } catch (error) {
-    console.error(error.message);
-  } 
+    const visited_countries = await db.query("SELECT * FROM visited_countries");
+    var countries = [];
+    visited_countries.rows.forEach((country) => {
+      countries.push(country.country_code);
+    });
+    res.render("index.ejs", {
+      countries: countries,
+      total: countries.length,
+      error: "Country name does not exist. Try again",
+    });
+  }
 });
 
 app.listen(port, () => {
