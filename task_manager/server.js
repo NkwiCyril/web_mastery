@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import "dotenv/config";
@@ -33,10 +33,9 @@ app.get("/home", async (req, res) => {
   const name = username;
   try {
     const items_todo = await axios.get(API_URI + "api/filter?status=" + todo);
-    const items_inprogress = await axios.get(
-      API_URI + "api/filter?status=" + inprogress
-    );
+    const items_inprogress = await axios.get(API_URI + "api/filter?status=" + inprogress);
     const items_done = await axios.get(API_URI + "api/filter?status=" + done);
+
     res.status(200).render("index.ejs", {
       name: name,
       itemsTodo: items_todo.data,
@@ -66,7 +65,7 @@ app.get("/edit/:id", async (req, res) => {
 // create a task and add to list of tasks
 app.post("/add", async (req, res) => {
   try {
-    const response = await axios.post(API_URI + "api/tasks", req.body);
+    await axios.post(API_URI + "api/tasks", req.body);
     res.redirect("/home");
   } catch (error) {
     console.error(error.message);
@@ -87,7 +86,7 @@ app.post("/edit/:id", async (req, res) => {
 app.get("/delete/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    await axios.delete(API_URI + "api/tasks/" + id);
+    const response = await axios.delete(API_URI + "api/tasks/" + id);
     res.redirect("/home");
   } catch (error) {
     res.status(409).send("Unable to delete task. Go back and try again.");
