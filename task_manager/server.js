@@ -16,9 +16,15 @@ app.get("/", (req, res) => {
   res.render("start.ejs");
 });
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   username = req.body.username;
-  res.redirect("/home");
+  try {
+    await axios.post(API_URI + "api/users", req.body);
+    res.redirect("/home");
+  } catch (error) {
+    console.error("Error posting data:", error.message);
+    res.status(500).send("An error occurred while posting data to the server");
+  }
 });
 
 // start.ejs
@@ -33,7 +39,9 @@ app.get("/home", async (req, res) => {
   const name = username;
   try {
     const items_todo = await axios.get(API_URI + "api/filter?status=" + todo);
-    const items_inprogress = await axios.get(API_URI + "api/filter?status=" + inprogress);
+    const items_inprogress = await axios.get(
+      API_URI + "api/filter?status=" + inprogress
+    );
     const items_done = await axios.get(API_URI + "api/filter?status=" + done);
 
     res.status(200).render("index.ejs", {
