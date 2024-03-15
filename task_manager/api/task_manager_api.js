@@ -75,6 +75,17 @@ app.get("/api/filter", async (req, res) => {
   }
 });
 
+// insert every username into the database
+app.post("/api/users", async (req, res) => {
+  const username = req.body.username;
+  try {
+    await db.query("INSERT INTO users (username) VALUES ($1)", [username]);
+  } catch (error) {
+    console.error("Error addind user into database: ", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // create a task and insert into the database
 app.post("/api/tasks", async (req, res) => {
   const { status, content } = req.body;
@@ -122,7 +133,6 @@ app.delete("/api/tasks/:id", async (req, res) => {
     res.status(500).json({ error: "An internal server error occurred" });
   }
 });
-
 
 app.listen(PORT, () => {
   console.log(`API steady on http://localhost:${PORT}`);
