@@ -1,15 +1,25 @@
 import express from "express";
 import bodyParser from "body-parser";
-import tasks from "../modules/tasks.js";
+import pg from "pg";
+import "dotenv/config";
 
 const app = express();
 const PORT = 7000;
 
-var len = tasks.length;
-var lastId = tasks.lastIndexOf(tasks[len - 1]) + 1;
-
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "task_manager",
+  password: process.env.PASSWORD,
+  port: 5432,
+});
+
+db.connect();
+
+const tasks = await db.query("SELECT * FROM tasks");
 
 app.get("/", (req, res) => {
   res.send("Task manager ready to go!!");
@@ -17,71 +27,102 @@ app.get("/", (req, res) => {
 
 // get all tasks
 app.get("/api/tasks", (req, res) => {
-  res.status(200).json(tasks);
+  res.json(tasks.rows);
 });
 
 // get task by id
-app.get("/api/tasks/:id", (req, res) => {
+app.get("/api/tasks/:id", async (req, res) => {
   const id = req.params.id;
-  const foundById = tasks.find((task) => task.id === parseInt(id));
-  (foundById == undefined)
-    ? res.json({ message: "Task " + id + " not found " })
-    : res.json(foundById)
+
+  try {
+    const task = await db.query("SELECT * FROM tasks WHERE id = $1", [id]);
+    if (task.rows.length === 0) {
+      res.json({ message: `Task with id ${id} not found!` });
+    } else {
+      res.json(task.rows);
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 // filter tasks by status [in_progress, todo, done]
-app.get("/api/filter", (req, res) => {
+app.get("/api/filter", async (req, res) => {
   const { status } = req.query;
-  const filteredTasks = tasks.filter((task) => task.status === status);
 
-  res.status(200).json(filteredTasks);
-});
+  // Check if the status parameter is missing or empty
+  if (!status) {
+    return res.status(400).json({ error: "Status parameter is required" });
+  }
 
-// create a task
-app.post("/api/tasks", (req, res) => {
-  const createdTask = {
-    id: (lastId += 1),
-    content: req.body.content,
-    status: req.body.status,
-    time: new Date().toLocaleTimeString(),
-    date: new Date().toLocaleDateString(),
-  };
-  tasks.push(createdTask);
-  if (tasks.includes(createdTask)) {
-    res.status(200).json({ message: "Task added successfully!" });
-  } else {
-    res.status(404).json({ message: "Task could not be added. Try again!" });
+  try {
+    const filteredTasks = await db.query(
+      "SELECT * FROM tasks WHERE status = $1 GROUP BY id",
+      [status]
+    );
+
+    // Check if no tasks match the specified status
+    if (filteredTasks.rows.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No tasks found with the specified status" });
+    }
+
+    res.status(200).json(filteredTasks.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
-// edit a task
-app.patch("/api/tasks/:id", (req, res) => {
-  const id = req.params.id;
-  const searchTask = tasks.find((task) => task.id === parseInt(id));
-  if (!searchTask)
-    return res.status(404).json({ message: "Unable to find task." });
+// create a task and insert into the database
+app.post("/api/tasks", async (req, res) => {
+  const { status, content } = req.body;
+  const time = new Date().toLocaleTimeString();
+  const date = new Date().toLocaleDateString();
 
-  if (req.body.content) searchTask.content = req.body.content;
-  if (req.body.status) searchTask.status = req.body.status;
+  if (!content || !status) {
+    return res.status(500).json({ error: "Content and status are required." });
+  }
 
-  res.status(200).json(searchTask);
-});
-
-app.delete("/api/tasks/:id", (req, res) => {
-  const id = req.params.id;
-  const searchIndex = tasks.findIndex((task) => task.id === parseInt(id));
-  if (tasks.includes(tasks[searchIndex])) {
-    tasks.splice(searchIndex, 1);
-    res.status(200).json({
-      message: "task successfully deleted.",
-      response: tasks,
-    });
-  } else {
-    res.status(404).json({
-      message: "Unable to find task.",
-    });
+  try {
+    await db.query(
+      "INSERT INTO tasks (content, status, created_time, created_date) VALUES ($1, $2, $3, $4)",
+      [content, status, time, date]
+    );
+    res.status(201).json({ message: "Task created successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
+
+// update a task
+app.patch("/api/tasks/:id", async (req, res) => {
+  const taskId = req.params.id;
+
+  try {
+    await db.query("UPDATE tasks SET content=$1, status=$2 WHERE id=$3", [
+      req.body.content,
+      req.body.status,
+      taskId,
+    ]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.delete("/api/tasks/:id", async (req, res) => {
+  const taskId = req.params.id;
+  try {
+    await db.query("DELETE FROM tasks WHERE id=$1", [taskId]);
+    res.status(200).json({ message: "Task deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting task:", error.message);
+    res.status(500).json({ error: "An internal server error occurred" });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`API steady on http://localhost:${PORT}`);

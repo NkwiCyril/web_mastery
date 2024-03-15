@@ -1,19 +1,13 @@
 <%- include("partials/header.ejs") %>
+
 <body>
   <header class="welcome">
     <h1>Update Task</h1>
   </header>
   <section class="container">
     <div class="form">
-      <form action="/edit/<%= todo.id %>" method="POST">
-        <input
-          type="text"
-          name="content"
-          required
-          placeholder="Input task"
-          value="<%= todo.content %>"
-          autocomplete="off"
-        />
+      <form action="/edit/<%= task.id %>" method="POST">
+        <input type="text" name="content" required value="<%= task.content %>" />
         <select name="status" id="status" title="Add task status" required>
           <option value="">Status</option>
           <option value="todo">To Do (Not Started)</option>

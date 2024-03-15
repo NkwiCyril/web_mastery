@@ -54,7 +54,7 @@ app.get("/edit/:id", async (req, res) => {
   try {
     const response = await axios.get(API_URI + "api/tasks/" + id);
     res.render("edit.ejs", {
-      todo: response.data,
+      task: response.data[0],
     });
   } catch (error) {
     res.status(404).send("Unable to get task.");
@@ -72,6 +72,7 @@ app.post("/add", async (req, res) => {
   }
 });
 
+// patch request in order to partially edit a task
 app.post("/edit/:id", async (req, res) => {
   const id = req.params.id;
   try {
