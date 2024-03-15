@@ -19,15 +19,11 @@ select * from users
 
 select count(*) from tasks
 
-INSERT INTO users (username, task_id)
-VALUES 
-    ('Jane Doe', 1),
-    ('John Doe', 2);
-delete from tasks where id = 6
-
+INSERT INTO users (username) VALUES ('Nkwi Cyril Akini')
 INSERT INTO tasks (content, status, user_id, created_time, created_date)
 VALUES 
     ('Continue data migration to PG database', 'inprogress', 2, '1:17:07 PM', '3/12/2024');
 	
 ALTER TABLE users
 DROP COLUMN task_id; 
+
