@@ -20,11 +20,12 @@ app.post("/", async (req, res) => {
   username = req.body.username;
   try {
     await axios.post(API_URI + "api/users", req.body);
-    res.redirect("/home");
   } catch (error) {
-    console.error("Error posting data:", error.message);
-    res.status(500).send("An error occurred while posting data to the server");
+    console.error("Error posting data: ", error.message);
+    res.status(500).send("<h1>An error occurred while posting data to the server</h1>");
   }
+  res.redirect("/home");
+
 });
 
 // start.ejs

@@ -81,7 +81,7 @@ app.post("/api/users", async (req, res) => {
   try {
     await db.query("INSERT INTO users (username) VALUES ($1)", [username]);
   } catch (error) {
-    console.error("Error addind user into database: ", error.message);
+    console.error("Error encountered while adding user: ", error.message);
     res.status(500).json({ error: "Internal server error" });
   }
 });
