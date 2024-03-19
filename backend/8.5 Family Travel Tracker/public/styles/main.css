@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Homemade+Apple&family=Manrope:wght@200..800&family=Pacifico&display=swap");
+
 html {
   box-sizing: border-box;
 }
@@ -12,7 +14,7 @@ body {
 }
 body {
   background: #21252b;
-  font-family: "Roboto", sans-serif;
+  font-family: "Figtree", sans-serif;
 }
 
 .ag-canvas {
