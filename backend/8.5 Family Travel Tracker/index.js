@@ -58,6 +58,13 @@ async function getUserColor(userId) {
   return result.rows[0].color;
 }
 
+async function getUsername(userId) {
+  const result = await db.query("SELECT name FROM users WHERE id = $1", [
+    userId,
+  ]);
+  return result.rows[0].name;
+}
+
 app.get("/", async (req, res) => {
   const countries = await checkVisisted();
   const users = await getUsers();
@@ -66,10 +73,15 @@ app.get("/", async (req, res) => {
     countries: countries,
     total: countries.length,
     users: users,
-    color: "teal",
+    color: "#94a3b8",
   });
   // res.render("new.ejs")
 });
+
+// now to work adding a visited country for a specific family member
+// make use of the members id; can include it as a param in the route endpoint
+// All countries that are added need to have a user id since they are to be countries
+// visited by famiy members 
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
 
@@ -100,12 +112,14 @@ app.post("/user", async (req, res) => {
     const userCountries = await getUserCountries(input);
     const userColor = await getUserColor(input);
     const users = await getUsers();
+    const username = await getUsername(input)
 
     res.render("index.ejs", {
       countries: userCountries,
       total: userCountries.length,
       users: users,
       color: userColor,
+      username: username
     });
   } else if (req.body["add"]) {
     res.render("new.ejs");
@@ -117,11 +131,22 @@ app.post("/new", async (req, res) => {
   //https://www.postgresql.org/docs/current/dml-returning.html
 
   if (!req.body["name"] || !req.body["color"]) {
-    return res
-      .status(505)
-      .send(
-        "<h1>Please input all values before proceeding. Go back and try again.</h1>"
-      );
+    return res.status(505).send(
+      `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Error: Missing Input Values</title>
+        <link rel="stylesheet" href="/styles/styles.css">  </head>
+      <body>
+        <h1>Missing Input Values</h1>
+        <p>Please go back and fill in all required fields (name and color) before submitting the form.</p>
+      </body>
+      </html>
+    `
+    );
   }
 
   try {
@@ -129,6 +154,7 @@ app.post("/new", async (req, res) => {
       req.body["name"],
       req.body["color"],
     ]);
+    res.redirect("/");
   } catch (error) {}
 });
 
