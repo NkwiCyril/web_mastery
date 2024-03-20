@@ -1,15 +1,17 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Homemade+Apple&family=Manrope:wght@200..800&family=Pacifico&display=swap");
 * {
   box-sizing: border-box;
 }
 body {
-  position: absolute;
-  top: 35%;
-  left: 35%;
-  transform: translate(-35%, -35%);
-  font-family: "Roboto";
+  font-family: "Figtree", sans-serif;
   color: #ffffff;
 }
+
+.new-container {
+  max-width: 31%;
+  margin: 5rem auto;
+}
+
 input[type="radio"] {
   display: none;
 }
@@ -52,6 +54,7 @@ label {
   height: 25px;
   margin-right: 10px;
   cursor: pointer;
+  font-family: "Figtree", sans-serif;
 }
 label:hover span {
   transform: scale(1.25);
@@ -91,4 +94,8 @@ label span.purple {
 }
 label span.pink {
   background: #e03997;
+}
+
+button {
+  font-family: "Figtree", sans-serif;
 }
