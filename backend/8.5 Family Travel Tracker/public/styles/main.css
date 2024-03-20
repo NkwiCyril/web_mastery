@@ -68,7 +68,7 @@ body {
 }
 
 input {
-  font-family: "Roboto", sans-serif;
+  font-family: "Figtree", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -81,7 +81,7 @@ input {
 }
 
 button {
-  font-family: "Roboto", sans-serif;
+  font-family: "Figtree", sans-serif;
   text-transform: uppercase;
   outline: 0;
   background: teal;
@@ -97,7 +97,7 @@ button {
 }
 
 .total-count {
-  font-family: "Roboto", sans-serif;
+  font-family: "Figtree", sans-serif;
   color: white;
   position: absolute;
   padding: 15px;
@@ -154,7 +154,7 @@ button {
   padding: 0;
   border: 0;
   outline: none;
-  font-size: 13px;
+  font-size: 20px;
 }
 .tab-view > ul > li {
   position: absolute;
