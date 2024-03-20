@@ -16,10 +16,11 @@ const db = new pg.Client({
 
 db.connect();
 
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
+// get country codes of all countries visited by family members
 async function checkVisisted() {
   const result = await db.query("SELECT country_code FROM visited_countries");
   let countries = [];
@@ -73,7 +74,16 @@ app.post("/add", async (req, res) => {
     console.log(err);
   }
 });
-app.post("/user", async (req, res) => {});
+app.post("/user", async (req, res) => {
+  const userId = req.body["user"];
+  try {
+    const response = await db.query(
+      "SELECT country_code, color FROM visited_countries JOIN users ON user_id = $1",
+      [userId]
+    );
+    console.log(response.rows);
+  } catch (error) {}
+});
 
 app.post("/new", async (req, res) => {
   //Hint: The RETURNING keyword can return the data that was inserted.
