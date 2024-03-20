@@ -30,12 +30,32 @@ async function checkVisisted() {
   return countries;
 }
 
-// function to get all users from database
+// get all users from database
 async function getUsers() {
   const result = await db.query("SELECT * FROM users");
-  const users = result.rows;
 
-  return users;
+  return result.rows;
+}
+
+// get all country codes for particular family members
+async function getUserCountries(userId) {
+  const result = await db.query(
+    "SELECT country_code FROM visited_countries JOIN users ON user_id = users.id WHERE users.id = $1",
+    [userId]
+  );
+  let userCountries = [];
+  result.rows.forEach((country) => {
+    userCountries.push(country.country_code);
+  });
+  return userCountries;
+}
+
+// get user's color
+async function getUserColor(userId) {
+  const result = await db.query("SELECT color FROM users WHERE id = $1", [
+    userId,
+  ]);
+  return result.rows[0].color;
 }
 
 app.get("/", async (req, res) => {
@@ -75,19 +95,41 @@ app.post("/add", async (req, res) => {
   }
 });
 app.post("/user", async (req, res) => {
-  const userId = req.body["user"];
-  try {
-    const response = await db.query(
-      "SELECT country_code, color FROM visited_countries JOIN users ON user_id = $1",
-      [userId]
-    );
-    console.log(response.rows);
-  } catch (error) {}
+  if (req.body["user"]) {
+    const input = req.body["user"];
+    const userCountries = await getUserCountries(input);
+    const userColor = await getUserColor(input);
+    const users = await getUsers();
+
+    res.render("index.ejs", {
+      countries: userCountries,
+      total: userCountries.length,
+      users: users,
+      color: userColor,
+    });
+  } else if (req.body["add"]) {
+    res.render("new.ejs");
+  }
 });
 
 app.post("/new", async (req, res) => {
   //Hint: The RETURNING keyword can return the data that was inserted.
   //https://www.postgresql.org/docs/current/dml-returning.html
+
+  if (!req.body["name"] || !req.body["color"]) {
+    return res
+      .status(505)
+      .send(
+        "<h1>Please input all values before proceeding. Go back and try again.</h1>"
+      );
+  }
+
+  try {
+    await db.query("INSERT INTO users (name, color) VALUES ($1, $2)", [
+      req.body["name"],
+      req.body["color"],
+    ]);
+  } catch (error) {}
 });
 
 app.listen(port, () => {
