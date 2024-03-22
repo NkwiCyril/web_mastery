@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
   <title>Travel Tracker</title>
 </head>
 
 <body>
   <!-- add design where a user identify that he/she is in the section of a particular family member -->
-  <!-- a speicific color at the border bottom of all username buttons will do 🤔 -->
+  <!-- a specific color at the border bottom of all username buttons will do 🤔 -->
   <form class="tab-view tab-view-height-auto" action="/user" method="post">
     <% users.forEach(function(user) { %>
-    <input type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>">
-    <label for="<%= user.id %>" style="background-color: <%= user.color %>;">
+    <input type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>" >
+    <label for="<%= user.id %>" style="background-color: <%= user.color %>;" class="label">
       <%= user.name %>
     </label>
     <% }); %>
@@ -211,7 +211,7 @@
     </svg>
   </section>
   <% if(locals.username) { %>
-  <h2 class="total-count">Countries visited by <%= username %>: <%=total%>
+    <h2 class="total-count">Countries visited by <%= username %>: <%=total%>
     <% } else { %>
     <h2 class="total-count">Total Countries Visited: <%=total%>
       <%} %>
@@ -222,7 +222,18 @@
       country_codes.forEach(code => {
         document.getElementById(code).style.fill = "<%= color %>"
       });
+      
+      const labels = document.querySelectorAll(".label")
+
+      labels.forEach((label) => {
+        label.addEventListener("click", () => {
+          label.style.borderBottom = "3px dotted "
+        })
+      })
+
+
     </script>
+    <script src="/scripts/script.js"></script>
 </body>
 
 </html>
