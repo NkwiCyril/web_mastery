@@ -122,7 +122,6 @@ button {
   display: inline-block;
   margin: 0;
   padding: 0;
-  border: 0;
   outline: none;
   cursor: pointer;
   transition: all 0.1s;
@@ -131,6 +130,11 @@ button {
   -moz-transition: all 0.1s;
   -webkit-transition: all 0.1s;
 }
+
+.tab-view > .user {
+  border-bottom: 2px solid black 
+}
+
 .tab-view > label i {
   display: block;
   float: left;
