@@ -75,7 +75,6 @@ app.get("/", async (req, res) => {
     users: users,
     color: "#94a3b8",
   });
-  // res.render("new.ejs")
 });
 
 // now to work adding a visited country for a specific family member
