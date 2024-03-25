@@ -14,6 +14,8 @@ const db = new pg.Client({
   port: 5432,
 });
 
+var userId;
+
 db.connect();
 
 app.use(express.json());
@@ -68,7 +70,6 @@ async function getUsername(userId) {
 app.get("/", async (req, res) => {
   const countries = await checkVisisted();
   const users = await getUsers();
-
   res.render("index.ejs", {
     countries: countries,
     total: countries.length,
@@ -94,8 +95,8 @@ app.post("/add", async (req, res) => {
     const countryCode = data.country_code;
     try {
       await db.query(
-        "INSERT INTO visited_countries (country_code) VALUES ($1)",
-        [countryCode]
+        "INSERT INTO visited_countries (country_code, user_id) VALUES ($1, $2)",
+        [countryCode, userId]
       );
       res.redirect("/");
     } catch (err) {
@@ -107,11 +108,11 @@ app.post("/add", async (req, res) => {
 });
 app.post("/user", async (req, res) => {
   if (req.body["user"]) {
-    const input = req.body["user"];
-    const userCountries = await getUserCountries(input);
-    const userColor = await getUserColor(input);
+    userId = req.body["user"];
+    const userCountries = await getUserCountries(userId);
+    const userColor = await getUserColor(userId);
     const users = await getUsers();
-    const username = await getUsername(input)
+    const username = await getUsername(userId)
 
     res.render("index.ejs", {
       countries: userCountries,
@@ -154,7 +155,9 @@ app.post("/new", async (req, res) => {
       req.body["color"],
     ]);
     res.redirect("/");
-  } catch (error) {}
+  } catch (error) {
+
+  }
 });
 
 app.listen(port, () => {

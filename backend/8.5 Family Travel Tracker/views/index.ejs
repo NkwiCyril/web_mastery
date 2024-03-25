@@ -13,7 +13,7 @@
   <!-- a specific color at the border bottom of all username buttons will do 🤔 -->
   <form class="tab-view tab-view-height-auto" action="/user" method="post">
     <% users.forEach(function(user) { %>
-    <input type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>" >
+    <input type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>">
     <label for="<%= user.id %>" style="background-color: <%= user.color %>;" class="label">
       <%= user.name %>
     </label>
@@ -28,6 +28,7 @@
     <input type="text" name="country" autofocus placeholder="<%= locals.error ? error :  'Enter country name'%>">
     <button type="submit" style="background-color:<%= color %>;">Add</button>
   </form>
+
 
   <section class="ag-canvas">
     <svg class="ag-canvas_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1008 651">
@@ -211,7 +212,7 @@
     </svg>
   </section>
   <% if(locals.username) { %>
-    <h2 class="total-count">Countries visited by <%= username %>: <%=total%>
+  <h2 class="total-count">Countries visited by <%= username %>: <%=total%>
     <% } else { %>
     <h2 class="total-count">Total Countries Visited: <%=total%>
       <%} %>
@@ -222,7 +223,7 @@
       country_codes.forEach(code => {
         document.getElementById(code).style.fill = "<%= color %>"
       });
-      
+
       const labels = document.querySelectorAll(".label")
 
       labels.forEach((label) => {
@@ -230,8 +231,6 @@
           label.style.borderBottom = "3px dotted "
         })
       })
-
-
     </script>
     <script src="/scripts/script.js"></script>
 </body>
