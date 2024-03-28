@@ -34,7 +34,7 @@ async function checkVisisted() {
 
 // get all users from database
 async function getUsers() {
-  const result = await db.query("SELECT * FROM users");
+  const result = await db.query("SELECT * FROM users ORDER BY id ASC");
 
   return result.rows;
 }
@@ -121,8 +121,14 @@ app.post("/user", async (req, res) => {
       color: userColor,
       username: username
     });
-  } else if (req.body["add"]) {
+  } 
+  
+  if (req.body["add"]) {
     res.render("new.ejs");
+  } 
+  
+  if(req.body["delete-user"]) {
+    res.render("delete.ejs");
   }
 });
 
@@ -159,6 +165,7 @@ app.post("/new", async (req, res) => {
 
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
