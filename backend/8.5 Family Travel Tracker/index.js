@@ -81,7 +81,7 @@ app.get("/", async (req, res) => {
 // now to work adding a visited country for a specific family member
 // make use of the members id; can include it as a param in the route endpoint
 // All countries that are added need to have a user id since they are to be countries
-// visited by famiy members 
+// visited by famiy members
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
 
@@ -112,22 +112,22 @@ app.post("/user", async (req, res) => {
     const userCountries = await getUserCountries(userId);
     const userColor = await getUserColor(userId);
     const users = await getUsers();
-    const username = await getUsername(userId)
+    const username = await getUsername(userId);
 
     res.render("index.ejs", {
       countries: userCountries,
       total: userCountries.length,
       users: users,
       color: userColor,
-      username: username
+      username: username,
     });
-  } 
-  
+  }
+
   if (req.body["add"]) {
     res.render("new.ejs");
-  } 
-  
-  if(req.body["delete-user"]) {
+  }
+
+  if (req.body["delete"]) {
     res.render("delete.ejs");
   }
 });
@@ -162,10 +162,24 @@ app.post("/new", async (req, res) => {
     ]);
     res.redirect("/");
   } catch (error) {
-
+    console.log("Encountered error: ", error);
   }
 });
 
+app.post("/delete", async (req, res) => {
+  const name = req.body["username"];
+  const id = await db.query("SELECT id FROM users WHERE name = $1", [name]);
+
+  try {
+    await db.query("DELETE FROM visited_countries WHERE user_id = $1", [
+      id.rows[0]["id"],
+    ]);
+    await db.query("DELETE FROM users WHERE name = $1", [name]);
+    res.redirect("/");
+  } catch (error) {
+    console.log("Encountered error: ", error.message);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
