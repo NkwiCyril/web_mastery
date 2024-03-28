@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family Travel Tracker: Delete Member</title>
+  </head>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Homemade+Apple&family=Manrope:wght@200..800&family=Pacifico&display=swap");
+
+    * {
+      font-family: "Figtree", Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #21252b;
+    }
+
+    .form-container {
+      margin: 4rem auto;
+      padding: 10px;
+      color: white;
+      width: 50%;
+      text-align: center;
+    }
+
+    label {
+      font-size: 18px;
+      margin-top: 7px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 7px;
+      width: 50%;
+    }
+
+    input[type="submit"] {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px;
+      font-size: 16px;
+      margin-top: 7px;
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div class="form-container">
+      <form action="/delete" method="post">
+        <label for="name">Member to delete: </label><br />
+        <input type="text" placeholder="Family member name" required/><br />
+        <input type="submit" name="submit" value="Delete" />
+      </form>
+    </div>
+  </body>
+</html>
